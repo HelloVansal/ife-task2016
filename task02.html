@@ -2,9 +2,289 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>task02</title>
 </head>
+
+<style>
+    body, ul, ol, h1, h2, h3, h4 ,h5, p, input{
+        font-family: "Microsoft Yahei";
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: #DEDEDE;
+    }
+    ul{
+        list-style: none;
+    }
+    .header{
+        height: 42px;
+        line-height: 42px;
+        color: white;
+        background-color: black;
+    }
+    .header-logo{
+        float: left;
+        font-size: 2em;
+        font-weight: bold;
+		line-height: 42px;
+    }
+    .header-nav{
+        float: right;
+        margin-right: 20px;
+    }
+    .header-nav li{
+        float: left;
+        background-color: black;
+        padding: 0 5px;
+    }
+    .content{
+        overflow: hidden;
+        margin: 25px;
+        padding: 25px 35px;
+        background-color: white;
+        box-shadow: 10px 10px 5px #888888;
+    }
+    .content h2, h3{
+        padding: 10px 0;
+    }
+    .content h3{
+        color: #706B71;
+        font-size: 1.1rem;
+    }
+    .content>span{
+        display: inline-block;
+        margin-right: 20px;
+        font-size: .8rem;
+        color: #939393;
+    }
+    .content .text{
+        padding: 10px 0;
+        text-indent: 2rem;
+    }
+    .content .img-wrap{
+        float: left;
+        box-sizing: border-box;
+        width: 150px;
+        height: 195px;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #eee;
+    }
+    .content .img-wrap .img-desc{
+        display: inline-block;
+        padding: 10px;
+    }
+    .content .text span{
+        font-weight: bold;
+    }
+    .content ol{
+        margin-left: 1rem;
+        padding: 10px 0 10px 30px;
+    }
+    table{
+        width: 100%;
+        margin-top: 10px;
+    }
+    table th{
+        color: white;
+        background-color: black;
+    }
+    table td{
+        border: 1px solid #ccc;
+    }
+    table tr:last-child{
+        background-color: #eee;
+    }
+    .aside{
+        float: left;
+        width: 25%;
+        height: 500px;
+        background-color: red;
+    }
+    form{
+        float: right;
+        width: 75%;
+    }
+    form .desc{
+        display: inline-block;
+        width: 150px;
+        text-align: right;
+    }
+    form .mark{
+        font-size: .8rem;
+        color: #939393;
+        margin: 10px 0 10px 160px;
+    }
+    form li{
+        margin: 20px 0;
+    }
+    textarea{
+        width: 600px;
+        height: 100px;
+    }
+
+</style>
+
 <body>
+    <div class="header">
+        <div class="header-logo">Code matters</div>
+        <ul class="header-nav">
+            <li>导航链接一</li>
+            <li>导航链接二</li>
+            <li>导航链接三</li>
+            <li>导航链接四</li>
+        </ul>
+    </div>
+    <div class="content">
+        <h2>文章一级标题</h2>
+        <h3>文章二级标题</h3>
+        <span>文章作者</span>
+        <span>文章发表时间</span>
+        <p class="text"> 这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，还行了<br>
+        这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<a href="#">这里有一个链接到http://ife.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，<span>这里有个粗体字</span>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。
+        </p>
+        <div class="img">
+            <img src="./img/logo.png" alt="logo">
+        </div>
+        <p class="text">这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，还行了<br>
+            这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<a href="#">这里有一个链接点击后打开新窗口链接到http://ife.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<span>这里有个粗体字</span>这是一个很长很长的段落，这是一个很长很长的段落。
+        </p>
+    </div>
+    <div class="content">
+        <h2>另外一篇文章一级标题</h2>
+        <h3>文章二级标题</h3>
+        <span>文章作者</span>
+        <span>文章发表时间</span>
+        <p class="text"> 这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，还行了<br>
+            这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<a href="#">这里有一个链接到http://ife.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，<span>这里有个粗体字</span>这是一个很长很长的段落。
+        </p>
+        <div class="img">
+            <img src="./img/logo.png" alt="logo">
+        </div>
+        <ul>
+            <li>列表项目一</li>
+            <li>列表项目二</li>
+            <li>列表项目三</li>
+        </ul>
+
+    </div>
+    <div class="content">
+        <h3>图片</h3>
+        <div class="img-wrap">
+            <span class="img-desc">好看的图片</span>
+            <img src="./img/logo.png" alt="logo">
+        </div>
+        <div class="img-wrap">
+            <span class="img-desc">好看的图片</span>
+            <img src="./img/logo.png" alt="logo">
+        </div>
+        <div class="img-wrap">
+            <span class="img-desc">好看的图片</span>
+            <img src="./img/logo.png" alt="logo">
+        </div>
+        <div class="img-wrap">
+            <span class="img-desc">好看的图片</span>
+            <img src="./img/logo.png" alt="logo">
+        </div>
+        <div class="img-wrap">
+            <span class="img-desc">好看的图片</span>
+            <img src="./img/logo.png" alt="logo">
+        </div>
+    </div>
+    <div class="content">
+        <h2>最后一篇文章一级标题</h2>
+        <h3>文章二级标题</h3>
+        <span>文章作者</span>
+        <span>文章发表时间</span>
+        <ol>
+            <li>排名1</li>
+            <li>排名2</li>
+            <li>排名3</li>
+        </ol>
+        <p>下面是一个表格，给表格加了一个border="1"好让你看出来是一个表格</p>
+        <table>
+            <tr>
+                <th>表头</th>
+                <th>表头</th>
+                <th>表头</th>
+            </tr>
+            <tr>
+                <td>表内容单元格</td>
+                <td>表内容单元格</td>
+                <td><a href="">操作</a></td>
+            </tr>
+            <tr>
+                <td>表内容单元格</td>
+                <td>表内容单元格</td>
+                <td><a href="">操作</a></td>
+            </tr>
+            <tr>
+                <td>表内容单元格</td>
+                <td>表内容单元格</td>
+                <td><a href="">操作</a></td>
+            </tr>
+            <tr>
+                <td>表内容单元格</td>
+                <td>表内容单元格</td>
+                <td><a href="">操作</a></td>
+            </tr>
+            <tr>
+                <td>总计</td>
+                <td colspan="2">1000</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="content">
+        <h3>这里以后是个侧栏，这是侧栏的标题</h3>
+        <div class="aside">
+        </div>
+        <form action="">
+            <ul>
+                <li>
+                    <span class="desc">请输入邮箱地址</span>
+                    <input type="text" value="这是一个文本输入框">
+                    <div class="mark">邮箱地址请按要求格式输入</div>
+                </li>
+                <li class="psd">
+                    <div>
+                        <span class="desc">请输入密码</span>
+                        <input type="password" value="11111111">
+                    </div>
+                    <div>
+                        <span class="desc">请重复输入密码</span>
+                        <input type="password" value="11111111">
+                    </div>
+                    <div class="mark">密码请为6-16位英文数字</div>
+                </li>
+                <li>
+                    <span class="desc"><h5>性别</h5></span>
+                    <input type="radio" name="sex" value="male" checked="checked">男
+                    <input type="radio" name="sex" value="female">女
+                </li>
+                <li>
+                    <span class="desc"><h5>城市</h5></span>
+                    <select name="city">
+                        <option value="">北京</option>
+                        <option value="">长沙</option>
+                        <option value="">上海</option>
+                        <option value="">浙江</option>
+                    </select>
+                </li>
+                <li>
+                    <span class="desc"><h5>爱好</h5></span>
+                    <input type="checkbox" name="like">运动
+                    <input type="checkbox" name="like">艺术
+                    <input type="checkbox" name="like">科学
+                </li>
+                <li>
+                    <span class="desc"><h5>个人描述</h5></span>
+                    <textarea>这是一个多行输入框，输入您的个人描述</textarea>
+                </li>
+            </ul>
+        </form>
+    </div>
 
 </body>
 </html>
