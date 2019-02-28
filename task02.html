@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>task02</title>
+    <title>零基础HTML及CSS编码</title>
 </head>
 
 <style>
@@ -69,6 +69,7 @@
         height: 195px;
         text-align: center;
         padding: 10px;
+        margin-left: 5px;
         border: 1px solid #eee;
     }
     .content .img-wrap .img-desc{
@@ -99,8 +100,7 @@
     .aside{
         float: left;
         width: 25%;
-        height: 500px;
-        background-color: red;
+        height: 400px;
     }
     form{
         float: right;
@@ -111,17 +111,29 @@
         width: 150px;
         text-align: right;
     }
+    .text-up{
+        vertical-align: top;
+    }
     form .mark{
         font-size: .8rem;
         color: #939393;
         margin: 10px 0 10px 160px;
     }
     form li{
-        margin: 20px 0;
+        margin: 15px 0;
     }
     textarea{
         width: 600px;
-        height: 100px;
+        height: 150px;
+    }
+    [type='submit']{
+        width: 120%;
+        height: 50px;
+        margin-top: -20px;
+        margin-left: -27%;
+        background-color: blue;
+        border-radius: 20px;
+        color: #fff;
     }
 
 </style>
@@ -243,18 +255,20 @@
         <form action="">
             <ul>
                 <li>
-                    <span class="desc">请输入邮箱地址</span>
-                    <input type="text" value="这是一个文本输入框">
+                    <label for="email" class="desc">请输入邮箱地址</label>
+                    <input id="email" type="text" value="这是一个文本输入框">
                     <div class="mark">邮箱地址请按要求格式输入</div>
                 </li>
                 <li class="psd">
                     <div>
-                        <span class="desc">请输入密码</span>
-                        <input type="password" value="11111111">
+                        <label for="psd" class="desc">请输入密码</label>
+                        <input id="psd" type="password" value="11111111">
                     </div>
+                </li>
+                <li>
                     <div>
-                        <span class="desc">请重复输入密码</span>
-                        <input type="password" value="11111111">
+                        <label for="repeat-psd" class="desc">请重复输入密码</label>
+                        <input id="repeat-psd" type="password" value="11111111">
                     </div>
                     <div class="mark">密码请为6-16位英文数字</div>
                 </li>
@@ -279,10 +293,11 @@
                     <input type="checkbox" name="like">科学
                 </li>
                 <li>
-                    <span class="desc"><h5>个人描述</h5></span>
+                    <span class="desc text-up"><h5>个人描述</h5></span>
                     <textarea>这是一个多行输入框，输入您的个人描述</textarea>
                 </li>
             </ul>
+            <input type="submit" value="确认提交">
         </form>
     </div>
 
