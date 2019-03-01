@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务七：实现常见的技术产品官网的页面架构及样式布局</title>
+</head>
+
+<style>
+    body, ul, li{
+        margin: 0;
+        padding: 0;
+        font-family: "Microsoft Yahei";
+    }
+    ul{
+        list-style: none;
+    }
+    a{
+        color: #000;
+        text-decoration: none;
+    }
+    .header{
+        height: 47px;
+    }
+    .header-logo{
+        float: left;
+        width: 250px;
+        height: 47px;
+        line-height: 47px;
+        padding-left: 50px;
+    }
+    .header img{
+        vertical-align: text-bottom;
+    }
+    .header-desc{
+        margin-left: 10px;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .header-nav{
+        float: right;
+        margin-right: 50px;
+    }
+    .header-nav li{
+        float: left;
+        font-size: 1.1rem;
+        padding: 3px 16px;
+        margin: 7px 3px 5px 3px;
+    }
+    .header-nav li:first-child {
+        color: red;
+        border-bottom: 5px solid red;
+    }
+    .header-nav li:last-child a{
+        color: red;
+        font-weight: bold;
+    }
+    .header-nav li:hover{
+        border-bottom: 5px solid red;
+    }
+    .header-nav li img{
+        vertical-align: middle;
+    }
+    .part1{
+        background: url("img/task07-background01.png") no-repeat;
+    }
+
+
+</style>
+
+<body>
+    <div class="header">
+        <div class=" header-logo">
+            <img src="img/task07-header02.png" alt="logo">
+            <span class="header-desc">新世界@Vansal</span>
+        </div>
+        <ul class="header-nav">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">最新活动</a></li>
+            <li><a href="#">项目介绍</a></li>
+            <li><a href="#">爱心社区</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li>
+                <img src="img/task07-header01.png">
+                <a href="#">登录</a>
+            </li>
+        </ul>
+    </div>
+    <div class="part1">
+        <div>
+            Time of new life
+        </div>
+        <div>
+            新时代，年轻的人们让我们一起
+        </div>
+        <div>
+            体验新生活，享受新生活
+        </div>
+        <input type="button" value="开始体验">
+    </div>
+
+
+</body>
+</html>

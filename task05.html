@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>任务二：零基础HTML及CSS编码(一)</title>
+    <title>任务五：零基础HTML及CSS编码(二)</title>
 </head>
 
 <style>
@@ -40,7 +40,7 @@
     }
     .content{
         overflow: hidden;
-        margin: 25px;
+        margin: 25px 415px 25px 25px;
         padding: 25px 35px;
         background-color: white;
         box-shadow: 10px 10px 5px #888888;
@@ -48,7 +48,7 @@
     .content h2, h3{
         padding: 10px 0;
     }
-    .content h3{
+    h3{
         color: #706B71;
         font-size: 1.1rem;
     }
@@ -98,39 +98,39 @@
         background-color: #eee;
     }
     .aside{
-        float: left;
-        width: 25%;
-        height: 400px;
-    }
-    form{
         float: right;
-        width: 75%;
+        width: 350px;
+        margin: 25px 25px 0 0;
+        box-sizing: border-box;
+        padding: 25px;
+        background-color: #fff;
+        box-shadow: 10px 10px 5px #888888;
     }
-    form .desc{
+    .desc{
         display: inline-block;
-        width: 150px;
+        width: 120px;
+        font-size: .8rem;
         text-align: right;
     }
     .text-up{
         vertical-align: top;
     }
-    form .mark{
+    .mark{
         font-size: .8rem;
         color: #939393;
-        margin: 10px 0 10px 160px;
+        margin: 10px 0 10px 130px;
     }
     form li{
         margin: 15px 0;
     }
     textarea{
-        width: 600px;
-        height: 150px;
+        width: 150px;
+        height: 50px;
     }
     [type='submit']{
-        width: 120%;
+        width: 100%;
         height: 50px;
         margin-top: -20px;
-        margin-left: -27%;
         background-color: blue;
         border-radius: 20px;
         color: #fff;
@@ -154,6 +154,56 @@
             <li>导航链接三</li>
             <li>导航链接四</li>
         </ul>
+    </div>
+    <div class="aside">
+        <h3>这里以后是个侧栏，这是侧栏的标题</h3>
+        <form action="">
+            <ul>
+                <li>
+                    <label for="email" class="desc">请输入邮箱地址</label>
+                    <input id="email" type="text" value="这是一个文本输入框">
+                    <div class="mark">邮箱地址请按要求格式输入</div>
+                </li>
+                <li class="psd">
+                    <div>
+                        <label for="psd" class="desc">请输入密码</label>
+                        <input id="psd" type="password" value="11111111">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <label for="repeat-psd" class="desc">请重复输入密码</label>
+                        <input id="repeat-psd" type="password" value="11111111">
+                    </div>
+                    <div class="mark">密码请为6-16位英文数字</div>
+                </li>
+                <li>
+                    <span class="desc"><h5>性别</h5></span>
+                    <input type="radio" name="sex" value="male" checked="checked">男
+                    <input type="radio" name="sex" value="female">女
+                </li>
+                <li>
+                    <span class="desc"><h5>城市</h5></span>
+                    <select name="city">
+                        <option value="">北京</option>
+                        <option value="">长沙</option>
+                        <option value="">上海</option>
+                        <option value="">浙江</option>
+                    </select>
+                </li>
+                <li>
+                    <span class="desc"><h5>爱好</h5></span>
+                    <input type="checkbox" name="like">运动
+                    <input type="checkbox" name="like">艺术
+                    <input type="checkbox" name="like">科学
+                </li>
+                <li>
+                    <span class="desc text-up"><h5>个人描述</h5></span>
+                    <textarea>这是一个多行输入框，输入您的个人描述</textarea>
+                </li>
+            </ul>
+            <input type="submit" value="确认提交">
+        </form>
     </div>
     <div class="content">
         <h2>文章一级标题</h2>
@@ -254,58 +304,6 @@
             </tr>
 
         </table>
-    </div>
-    <div class="content">
-        <h3>这里以后是个侧栏，这是侧栏的标题</h3>
-        <div class="aside">
-        </div>
-        <form action="">
-            <ul>
-                <li>
-                    <label for="email" class="desc">请输入邮箱地址</label>
-                    <input id="email" type="text" value="这是一个文本输入框">
-                    <div class="mark">邮箱地址请按要求格式输入</div>
-                </li>
-                <li class="psd">
-                    <div>
-                        <label for="psd" class="desc">请输入密码</label>
-                        <input id="psd" type="password" value="11111111">
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <label for="repeat-psd" class="desc">请重复输入密码</label>
-                        <input id="repeat-psd" type="password" value="11111111">
-                    </div>
-                    <div class="mark">密码请为6-16位英文数字</div>
-                </li>
-                <li>
-                    <span class="desc"><h5>性别</h5></span>
-                    <input type="radio" name="sex" value="male" checked="checked">男
-                    <input type="radio" name="sex" value="female">女
-                </li>
-                <li>
-                    <span class="desc"><h5>城市</h5></span>
-                    <select name="city">
-                        <option value="">北京</option>
-                        <option value="">长沙</option>
-                        <option value="">上海</option>
-                        <option value="">浙江</option>
-                    </select>
-                </li>
-                <li>
-                    <span class="desc"><h5>爱好</h5></span>
-                    <input type="checkbox" name="like">运动
-                    <input type="checkbox" name="like">艺术
-                    <input type="checkbox" name="like">科学
-                </li>
-                <li>
-                    <span class="desc text-up"><h5>个人描述</h5></span>
-                    <textarea>这是一个多行输入框，输入您的个人描述</textarea>
-                </li>
-            </ul>
-            <input type="submit" value="确认提交">
-        </form>
     </div>
     <div class="footer">
         版权所有© made by Vansal
