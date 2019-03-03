@@ -6,6 +6,7 @@
 </head>
 
 <style>
+/*————————————————————header开始————————————————————*/
     body, ul, li{
         margin: 0;
         padding: 0;
@@ -33,7 +34,7 @@
     }
     .header-desc{
         margin-left: 10px;
-        font-size: 1.5rem;
+        font-size: 1.5vw;
         font-weight: bold;
     }
     .header-nav{
@@ -42,7 +43,7 @@
     }
     .header-nav li{
         float: left;
-        font-size: 1.1rem;
+        font-size: 1.1vw;
         padding: 3px 16px;
         margin: 7px 3px 5px 3px;
     }
@@ -60,10 +61,74 @@
     .header-nav li img{
         vertical-align: middle;
     }
+/*————————————————————header结束,part1开始————————————————————*/
     .part1{
-        background: url("img/task07-background01.png") no-repeat;
+        overflow: hidden;
+        color: #FFF;
+        padding-left: 13%;
+        background: url("img/task07-background01.png") no-repeat center;
+        background-size: 100%;
     }
-
+    .part1 h2{
+        font-size: 4.8vw;
+    }
+    .part1 p:nth-child(2){
+         font-size: 1.8vw;
+     }
+    .part1 p:nth-child(3){
+        font-size: 1.2vw;
+    }
+    .part1 input{
+        width: 18vw;
+        font-size: 3vw;
+        margin-bottom: 150px;
+        background-color: #e74f4d;
+        border: none;
+        color: #FFF;
+    }
+/*————————————————————part1结束,part2开始————————————————————*/
+    .part2{
+        background: url("img/task07-background02.png") no-repeat center;
+        background-size: 100%;
+        text-align: center;
+    }
+    .part2 ul{
+        overflow: hidden;
+        padding: 70px 0;
+    }
+    .part2 li{
+        float: left;
+        margin: 0 auto;
+        width: 25%;
+    }
+    .part2 li div{
+        width: 70%;
+        margin: 0 auto;
+    }
+    .part2 li img{
+        display: block;
+        margin: 0 auto;
+        color: #B5B0B0;
+    }
+    .part2 li p{
+        font-size: 1.2vw;
+        color: #B5B0B0;
+    }
+/*————————————————————part2结束,part3开始————————————————————*/
+    .part3{
+        padding: 8% 0 5% 0;
+        background-color: #ededec;
+    }
+    .part3 img{
+        width: 7vw;
+        margin: 0 auto;
+        display: block;
+    }
+    .part3 p{
+        text-align: center;
+        font-size: 3vw;
+        color: #B5B0B0;
+    }
 
 </style>
 
@@ -86,16 +151,49 @@
         </ul>
     </div>
     <div class="part1">
-        <div>
+        <h2>
             Time of new life
-        </div>
-        <div>
+        </h2>
+        <p>
             新时代，年轻的人们让我们一起
-        </div>
-        <div>
+        </p>
+        <p>
             体验新生活，享受新生活
-        </div>
+        </p>
         <input type="button" value="开始体验">
+    </div>
+    <div class="part2">
+        <ul>
+            <li>
+                <div>
+                    <img src="img/task07-background02-01.png">
+                    <p>打造全新世界观，让你更爱你的生活</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="img/task07-background02-02.png">
+                    <p>丰富多彩的公益活动，发挥新世界的主人公意识</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="img/task07-background02-03.png">
+                    <p>时尚的新理念，超前体验未知的生活</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img src="img/task07-background02-04.png">
+                    <p>完善的培养机制，培养你全新的世界观</p>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="part3">
+        <img src="img/task07-background03-01.png">
+        <p>关于新世界，你不知道的还有什么？</p>
     </div>
 
 
