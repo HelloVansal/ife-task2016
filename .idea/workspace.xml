@@ -14,13 +14,45 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1552649766">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.36" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="1407" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="1407" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="png" value="2" />
+          <entry key="rnc" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Image" value="2" />
+          <entry key="RNG Compact" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/task07.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="345" column="10" lean-forward="true" selection-start-line="345" selection-start-column="10" selection-end-line="345" selection-end-column="10" />
+            <state relative-caret-position="259">
+              <caret line="403" column="20" lean-forward="true" selection-start-line="403" selection-start-column="20" selection-end-line="403" selection-end-column="20" />
               <folding>
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -30,6 +62,8 @@
                 <element signature="n#div#5;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#6;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#7;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#8;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#8;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -56,7 +90,13 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="55" />
     <option name="y" value="25" />
     <option name="width" value="1346" />
@@ -68,7 +108,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -85,6 +124,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -126,6 +166,7 @@
       <workItem from="1551682321528" duration="426000" />
       <workItem from="1551682791429" duration="2443000" />
       <workItem from="1551685372600" duration="738000" />
+      <workItem from="1551692243139" duration="10065000" />
     </task>
     <task id="LOCAL-00001" summary="add task03">
       <created>1551365864632</created>
@@ -138,13 +179,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23872000" />
+    <option name="totallyTimeSpent" value="33937000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18055555" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21502976" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -165,6 +206,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add task03" />
@@ -215,10 +259,23 @@
     <entry file="file://$PROJECT_DIR$/img/task07-background07.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/img/task07-background08-01.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/task07-footer01.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/web-forms.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="119" column="22" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/task07.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="345" column="10" lean-forward="true" selection-start-line="345" selection-start-column="10" selection-end-line="345" selection-end-column="10" />
+        <state relative-caret-position="259">
+          <caret line="403" column="20" lean-forward="true" selection-start-line="403" selection-start-column="20" selection-end-line="403" selection-end-column="20" />
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -228,6 +285,8 @@
             <element signature="n#div#5;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#6;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#7;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#8;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#8;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
