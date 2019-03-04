@@ -56,6 +56,7 @@
         font-weight: bold;
     }
     .header-nav li:hover{
+        transition: all .3s;
         border-bottom: 5px solid red;
     }
     .header-nav li img{
@@ -85,6 +86,10 @@
         background-color: #e74f4d;
         border: none;
         color: #FFF;
+    }
+    .part1 input:hover{
+        transition: all .5s;
+        border-radius: 1.5vw;
     }
 /*————————————————————part1结束,part2开始————————————————————*/
     .part2{
@@ -129,7 +134,155 @@
         font-size: 3vw;
         color: #B5B0B0;
     }
+/*————————————————————part3结束,part4开始————————————————————*/
+    .part4{
+        overflow: hidden;
+        color: #FFF;
+        background: url("img/task07-background04.png") no-repeat;
+        background-size: 100%;
+        text-align: center;
+    }
+    .part4 h4{
+        font-size: 2vw;
+    }
+    .part4>p{
+        font-size: 1.2vw;
+    }
+    .part4 ul{
+        display: inline-block;
+        margin-top: 1.5%;
+        margin-bottom: 9%;
+    }
+    .part4 ul li{
+        float: left;
+        width: 16vw;
+        height: 4vw;
+        margin: 0 2px;
+    }
+    .part4 ul li select, input{
+        width: 100%;
+        height: 100%;
+        border: 1px solid red;
+        font-size: 1.2vw;
+        color: #B5B0B0;
+    }
+    .part4 ul li select:hover, input:hover{
+        transition: all .5s;
+        border: 1px solid skyblue;
+    }
+    .part4 ul li input{
+        color: #FFF;
+        background-color: #e74f4d;
+    }
+/*————————————————————part4结束,part5开始————————————————————*/
+    .part5{
+        overflow: hidden;
+        background-color: #f7f7f7;
+    }
+    .part5 ul{
+        margin-top: 5%;
+        text-align: center;
+    }
+    .part5 ul li{
+        float: left;
+        width: 25%;
+    }
+    .part5 ul li img{
+        border: 15px solid white;
+    }
+    .part5 ul li p{
+        font-size: 0.7vw;
+        color: #B5B0B0;
+    }
+/*————————————————————part5结束,part6开始————————————————————*/
+    .part6{
+        overflow: hidden;
+    }
+    .part6 .part6-left{
+        float: left;
+        background: url("img/task07-background06.png") no-repeat;
+        background-size: 100%;
+        color: #FFF;
+        text-align: center;
+        width: 66.66%;
+    }
+    .part6 .part6-left p:nth-child(1){
+        margin-top: 5vw;
+        font-size: 2.2vw;
+    }
+    .part6 .part6-left h2{
+        font-size: 6vw;
+    }
+    .part6 .part6-left p:nth-child(3){
+        font-size: 1.2vw;
+    }
+    .part6 .part6-left p:nth-child(4){
+        margin: 5vw 0;
+        font-size: 1.2vw;
+    }
 
+    .part6 .part6-right{
+        margin-top: 10vw;
+        float: right;
+        width: 33.34%;
+        text-align: center;
+    }
+    .part6 .part6-right h4 span{
+        margin-left: 2vw;
+        color: red;
+    }
+    .part6 .part6-right p{
+        width: 80%;
+        margin: 0 auto;
+        color: #B5B0B0;
+        font-size: 1.2vw;
+    }
+    .part6 .part6-right a{
+        display: block;
+        width: 30%;
+        color: #e74f4d;
+        margin: 10% auto;
+        border: 1px solid red;
+        padding: .8vw;
+        font-size: 1.2vw;
+    }
+/*————————————————————part6结束,part7开始————————————————————*/
+    .part7{
+    }
+    .part7 ul{
+        display: flex;
+        text-align: center;
+    }
+    .part7 ul li{
+        flex: 1;
+        padding-top: 10vw;
+    }
+    .part7 ul li:nth-child(1){
+        color: #FFF;
+        background-color: #e74f4d;
+    }
+    .part7 ul li:nth-child(3){
+        background: url("img/task07-background07.png") no-repeat;
+        background-size: cover;
+    }
+    .part7 ul li p{
+        font-size: 1.2vw;
+        margin: .5vw 0;
+    }
+    .part7 ul li a{
+        display: inline-block;
+        margin: 10vw 0 3vw 0;
+        width: 30%;
+        padding: 1vw;
+    }
+    .part7 ul li:nth-child(1) a{
+        color: #FFF;
+        border: 1px solid #FFF;
+    }
+    .part7 ul li:nth-child(2) a{
+        color: #e74f4d;
+        border: 1px solid #e74f4d;
+     }
 </style>
 
 <body>
@@ -195,6 +348,95 @@
         <img src="img/task07-background03-01.png">
         <p>关于新世界，你不知道的还有什么？</p>
     </div>
+    <div class="part4">
+        <h4>查找新世界城市活动信息</h4>
+        <p>每个城市的有不同的活动信息，请自主查询您所需要了解的城市</p>
+        <ul>
+            <li>
+                <select>
+                    <option value="">中国</option>
+                    <option value="">美国</option>
+                </select>
+            </li>
+            <li>
+                <select>
+                    <option value="">湖南省</option>
+                    <option value="">湖北省</option>
+                    <option value="">香港特别行政区</option>
+                </select>
+            </li>
+            <li>
+                <select>
+                    <option value="">长沙市</option>
+                    <option value="">株洲市</option>
+                    <option value="">湘潭市</option>
+                </select>
+            </li>
+            <li>
+                <input type="button" value="搜索">
+            </li>
+        </ul>
+
+    </div>
+    <div class="part5">
+        <ul>
+            <li>
+                <img src="img/task07-background05-01.png">
+                <h2>北京活动</h2>
+                <p>新社区大联盟</p>
+            </li>
+            <li>
+                <img src="img/task07-background05-02.png">
+                <h2>上海活动</h2>
+                <p>夜上海新景观探索</p>
+            </li>
+            <li>
+                <img src="img/task07-background05-03.png">
+                <h2>深圳活动</h2>
+                <p>全新海岸线观点站</p>
+            </li>
+            <li>
+                <img src="img/task07-background05-04.png">
+                <h2>香港活动</h2>
+                <p>奢侈消费大派送</p>
+            </li>
+        </ul>
+
+    </div>
+    <div class="part6">
+        <div class="part6-left">
+            <p>新世界</p>
+            <h2>TIME</h2>
+            <p>@新世界－北京</p>
+            <p>2016.04.01</p>
+        </div>
+        <div class="part6-right">
+            <h4>新世界／ <span>01</span></h4>
+            <p>新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界</p>
+            <a href="#">更多详情</a>
+        </div>
+    </div>
+    <div class="part7">
+        <ul>
+            <li>
+                <div>
+                    <p>新时代</p>
+                    <p>关于爱生活的我们</p>
+                </div>
+                <a href="#">查看更多</a>
+            </li>
+            <li>
+                <div>
+                    <p>新时代</p>
+                    <p>关于爱生活的我们</p>
+                </div>
+                <a href="#">查看更多</a>
+            </li>
+            <li>
+            </li>
+        </ul>
+    </div>
+
 
 
 </body>
