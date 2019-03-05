@@ -6,7 +6,6 @@
 </head>
 
 <style>
-/*————————————————————header开始————————————————————*/
     body, ul, li{
         margin: 0;
         padding: 0;
@@ -19,12 +18,13 @@
         color: #000;
         text-decoration: none;
     }
+/*————————————————————header开始————————————————————*/
     .header{
+        overflow: hidden;
         height: 47px;
     }
     .header-logo{
         float: left;
-        width: 250px;
         height: 47px;
         line-height: 47px;
         padding-left: 50px;
@@ -33,7 +33,7 @@
         vertical-align: text-bottom;
     }
     .header-desc{
-        margin-left: 10px;
+        margin-left: 5px;
         font-size: 1.5vw;
         font-weight: bold;
     }
@@ -56,7 +56,7 @@
         font-weight: bold;
     }
     .header-nav li:hover{
-        transition: all .3s;
+        transition: all .5s;
         border-bottom: 5px solid red;
     }
     .header-nav li img{
@@ -306,14 +306,19 @@
     .part8-left ul{
         padding-top: 5vw;
     }
+    .part8-left ul li h4{
+        font-size: 1.2vw
+    }
     .part8-left ul li p{
         color: #B5B0B0;
+        font-size: 1.2vw
     }
     .part8-left ul li img{
         margin-right: .5vw;
     }
     .part8-left ul li a{
         display: block;
+        font-size: 1.2vw
     }
     .part8-left ul li a:hover{
         transition: all .5s;
@@ -398,12 +403,25 @@
     }
     .part9 ul{
         display: inline-block;
-        background-color: red;
     }
     .part9 ul li{
         float: left;
-        background-color: green;
+        margin: 1.5vw;
      }
+/*————————————————————part9结束,footer开始————————————————————*/
+    .footer {
+        overflow: hidden;
+        background-color: #2f3038;
+    }
+    .footer span, .footer a {
+        display: inline-block;
+        padding: 1vw 0 1vw 2vw;
+        color: #FFF;
+        font-size: 1.2vw;
+    }
+    .footer a{
+        margin-left: 70%;
+    }
 </style>
 
 <body>
@@ -631,8 +649,11 @@
             </li>
         </ul>
     </div>
-
-
-
+    <div class="footer">
+        <span>
+            @2016新世界 by Vansal
+        </span>
+        <a href="#">Back to top</a>
+    </div>
 </body>
 </html>
