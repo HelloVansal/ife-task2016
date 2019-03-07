@@ -5,17 +5,29 @@
     <title>任务九：使用HTML/CSS实现一个复杂页面</title>
 </head>
 <style>
-    body{
+    /*——————————————————————————————reset————————————————————————————————*/
+    *{
         margin: 0;
         padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    body{
+        font-family: "Microsoft Yahei";
+        font-size: 16px;
     }
     a{
         text-decoration: none;
         color: #FFF;
+        font-size: .8rem;
+    }
+    li:hover{
+        cursor: pointer;
     }
     /*——————————————————————————————header start————————————————————————————————*/
     .header{
-        position: fixed;
+        position: relative;
         width: 100%;
         height: 50px;
         background-color: #2189bf;
@@ -49,8 +61,193 @@
         top: 15px;
         right: 50px;
     }
+    .wrapper{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        top: 50px
+    }
+    /*——————————————————————————————header end, aside start————————————————————————————————*/
+    .aside{
+        position: absolute;
+        width: 200px;
+        height: 100%;
+        background-color: #2a2e3d;
+        color: #697a8e;
+        text-align: center;
+    }
+    .aside-header{
+        position: relative;
+        overflow: hidden;
+        padding: 15px 10px;
+    }
+    .aside-header img{
+        width: 65px;
+        display: block;
+        border-radius: 37px;
+        margin: auto;
+    }
+    .aside-header span{
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    .aside-header-left{
+        float: left;
+        width: 48%;
+        border-right: 2px solid #383d4e;
+    }
+    .aside-header-right{
+        float: left;
+        width: 49%;
+    }
+    .aside-header-left:hover, .aside-header-right:hover, .aside-list li:hover{
+        background-color: #383d4e;
+        color: #FFF;
+        cursor: pointer;
+    }
+    .aside-list{
+        width: 100%;
+    }
+    .aside-list li{
+        padding: 12px 0 12px 40px;
+        font-size: .8rem;
+        text-align: left;
+    }
+    .aside-list-folder{
+        text-indent: 1rem;
+    }
+    .aside-list-file{
+        text-indent: 3rem;
+    }
+    .aside-list li:nth-child(2), .aside-list li:nth-child(6){
+        background: url("img/task09-aside04.png") no-repeat 56px #383d4e;
+        text-indent: 2rem;
+    }
+    .aside-list li:nth-child(2):hover, .aside-list li:nth-child(6):hover{
+        background: url("img/task09-aside11.png") no-repeat 56px #383d4e;
+    }
+    .aside-list-folder, .aside-list li:first-child, .aside-list-file{
+        background-color: #383d4e;
+    }
+    .aside-list li:nth-child(1), .aside-list li:nth-child(3), .aside-list li:nth-child(4){
+        color: #FFF;
+    }
+    /*——————————————————————————————aside end, main-header start————————————————————————————————*/
+    .main{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 200px;
+        background-color: #EEEEED;
+        overflow: auto;
+        color: #b6b5b5;
+        font-size: .9rem;
+    }
+    .main-header{
+        width: 100%;
+        height: 40px;
+        box-sizing: border-box;
+        padding: 10px;
+        text-indent: 1rem;
+        background-color: #FFF;
+    }
+    .main-header span:last-child, .main-header span:hover{
+        color: #2189bf;
+        cursor: pointer;
+    }
+    /*——————————————————————————————main-header end, part1 start————————————————————————————————*/
+    .main-content{
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        bottom: 30px;
+        left: 20px;
+    }
+    .part1{
+        margin-bottom: 30px;
+        background-color: #FFF;
+        box-shadow: 10px 10px 5px #888;
+    }
+    .part1 ul{
+        overflow: hidden;
+        padding: 35px 0 35px 10px;
+    }
+    .part1 li{
+        float: left;
+        margin-left: 50px;
+        text-align: right;
+    }
+    .part1 li div:first-child{
+        margin-bottom: 10px;
+    }
+    .part1 li:nth-child(1) select{
+        width: 80px;
+    }
+    .part1 li:nth-child(2){
+        text-align: left;
+    }
+    .part1 .buy-wrapper,.part1 li:nth-child(2) img{
+        float: left;
+    }
+    .part1 li:nth-child(2) img{
+        margin: 9px 5px;
+    }
+    .part1 li:nth-child(2) select, .part1 li:nth-child(3) select{
+        width: 100px;
+    }
+    .part1 li:last-child input{
+        width: 60px;
+        height: 30px;
+        margin-top: 10px;
+        border: none;
+        background-color: #388ac1;
+        color: #FFF;
+    }
+    .part1 li:last-child input:hover{
+        transition: all 1s;
+        border-radius: 20px;
+    }
+    /*——————————————————————————————part1 end, part2 start————————————————————————————————*/
 
-    /*——————————————————————————————header end————————————————————————————————*/
+    .part2{
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    .part2 li{
+        flex: 3;
+        margin: 0 1.2%;
+        padding: 1.5% 0;
+        text-align: center;
+        background-color: #FFF;
+        box-shadow: 10px 10px 5px #888;
+    }
+    .part2 img{
+        display: block;
+    }
+    .part2 li:nth-child(1){
+        flex: 1;
+        margin-left: 0;
+    }
+    .part2 li:nth-child(2){
+        border-top: 5px solid #4388c9;
+    }
+
+    .part2 li:nth-child(8){
+        flex: 1;
+    }
+    .part2 li:last-child{
+        flex: 6;
+        margin-right: 0;
+    }
+    .part2 li p:nth-child(1){
+        color: #000;
+    }
+    .part2 li span{
+        font-size: 1.2rem;
+        color: #ed6300;
+    }
 </style>
 <body>
     <div class="header">
@@ -59,8 +256,194 @@
         <div class="sign-in">
             <img src="img/task09-header01.png"><a href="#">登录</a>
         </div>
+    </div>
+    <div class="wrapper">
+        <div class="aside">
+            <div class="aside-header">
+                <img src="img/Vansal.jpg">
+                <span>Vansal</span>
+                <div>
+                    <div class="aside-header-left">
+                        <p>666</p>
+                        <p>收藏</p>
+                    </div>
+                    <div class="aside-header-right">
+                        <p>233</p>
+                        <p>粉丝</p>
+                    </div>
+                </div>
+            </div>
+            <div class="aside-list">
+                <ul>
+                    <li>
+                        <img src="img/task09-aside02.png">
+                        <span>个人报表</span>
+                    </li>
+                    <li class="aside-list-folder">
+                        <img src="img/task09-aside01.png">
+                        <span>文件夹一</span>
+                    </li>
+                    <li class="aside-list-folder">
+                        <img src="img/task09-aside11.png">
+                        <img src="img/task09-aside02.png">
+                        <span>文件夹二</span>
+                    </li>
+                    <li class="aside-list-file">
+                        <img src="img/task09-aside05.png">
+                        <span>文档1</span>
+                    </li>
+                    <li class="aside-list-file">
+                        <img src="img/task09-aside05.png">
+                        <span>文档2</span>
+                    </li>
+                    <li class="aside-list-folder">
+                        <img src="img/task09-aside01.png">
+                        <span>文件夹三</span>
+                    </li>
+                    <li>
+                        <img src="img/task09-aside07.png">
+                        <span>个人收藏</span>
+                    </li>
+                    <li>
+                        <img src="img/task09-aside08.png">
+                        <span>我的分享</span>
+                    </li>
+                    <li>
+                        <img src="img/task09-aside07.png">
+                        <span>图库</span>
+                    </li>
+                    <li>
+                        <img src="img/task09-aside07.png">
+                        <span>成长记录</span>
+                    </li>
+                    <li>
+                        <img src="img/task09-aside03.png">
+                        <span>账户信息</span>
+                    </li>
+                </ul>
+
+            </div>
+
+
+        </div>
+        <div class="main">
+            <div class="main-header">
+                <span>c站</span>/<span>个人报表</span>/<span>文件一</span>/<span>文档一</span>
+            </div>
+            <div class="main-content">
+                <div class="part1">
+                    <ul>
+                        <li>
+                            <label for="query">查询项</label>
+                            <select name="" id="query">
+                                <option value="">第一项</option>
+                                <option value="">第二项</option>
+                                <option value="">第三项</option>
+                            </select>
+                        </li>
+                        <li>
+                            <div class="buy-wrapper">
+                                <div>
+                                    <label for="buy">买方</label>
+                                    <select name="" id="buy">
+                                        <option value="">小王</option>
+                                        <option value="">小明</option>
+                                        <option value="">小张</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="sell">卖方</label>
+                                    <select name="" id="sell">
+                                        <option value="">小红</option>
+                                        <option value="">小李</option>
+                                        <option value="">小陈</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <img src="img/task09-mainpart01-01.png">
+                        </li>
+                        <li>
+                            <div>
+                                <label for="date">日期</label>
+                                <input id="date" type="text" value="2019-03-07">
+                            </div>
+                            <div>
+                                <label for="people">人数</label>
+                                <select name="" id="people">
+                                    <option value="">10人</option>
+                                    <option value="">12人</option>
+                                    <option value="">14人</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="time">总耗时</label>
+                                <select name="" id="time">
+                                    <option value="">8天</option>
+                                    <option value="">10天</option>
+                                    <option value="">12天</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="deal">成交项</label>
+                                <select name="" id="deal">
+                                    <option value="">10人</option>
+                                    <option value="">12人</option>
+                                    <option value="">14人</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <input type="button" value="搜索">
+                        </li>
+                    </ul>
+
+                </div>
+                <ul class="part2">
+                        <li>
+                            <a href="#">
+                                <img src="img/task09-mainpart02-01.png">
+                            </a>
+                        </li>
+                        <li>
+                            <p>10:00 am</p>
+                            <p>￥<span>1200</span></p>
+                        </li>
+                        <li>
+                            <p>11:00 am</p>
+                            <p>￥<span>1200</span></p>
+                        </li>
+                        <li>
+                            <p>12:00 am</p>
+                            <p>￥<span>1200</span></p>
+                        </li>
+                        <li>
+                            <p>01:00 am</p>
+                            <p>￥<span>1200</span></p>
+                        </li>
+                        <li>
+                            <p>02:00 am</p>
+                            <p>￥<span>1200</span></p>
+                        </li>
+                        <li>
+                            <p>03:00 am</p>
+                            <p>￥<span>1200</span></p>
+                        </li>
+                        <li>
+                            <img src="img/task09-mainpart02-02.png">
+                        </li>
+                        <li>
+                            <img src="img/task09-mainpart02-03.png">
+                            <span>历史查询</span>
+                        </li>
+                </ul>
+            </div>
+
+        </div>
 
     </div>
+
 
 </body>
 </html>
