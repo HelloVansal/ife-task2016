@@ -69,6 +69,7 @@
     }
     /*——————————————————————————————header end, aside start————————————————————————————————*/
     .aside{
+        overflow: auto;
         position: absolute;
         width: 200px;
         height: 100%;
@@ -159,13 +160,13 @@
     /*——————————————————————————————main-header end, part1 start————————————————————————————————*/
     .main-content{
         position: absolute;
-        top: 70px;
+        top: 40px;
         right: 20px;
         bottom: 30px;
         left: 20px;
     }
-    .part1{
-        margin-bottom: 30px;
+    .part1, .part4{
+        margin-top: 30px;
         background-color: #FFF;
         box-shadow: 10px 10px 5px #888;
     }
@@ -208,45 +209,138 @@
         transition: all 1s;
         border-radius: 20px;
     }
-    /*——————————————————————————————part1 end, part2 start————————————————————————————————*/
-
+    /*——————————————————————————————part1 end, part2 start————————————————————————————*/
     .part2{
+        margin-top: 30px;
         display: flex;
         justify-content: space-between;
         align-items: stretch;
     }
     .part2 li{
-        flex: 3;
-        margin: 0 1.2%;
-        padding: 1.5% 0;
+        flex-grow: 2;
+        margin: 0 1rem;
+        padding: 1rem;
+        align-self: stretch;
         text-align: center;
         background-color: #FFF;
         box-shadow: 10px 10px 5px #888;
     }
-    .part2 img{
-        display: block;
-    }
     .part2 li:nth-child(1){
-        flex: 1;
+        flex-grow: 1;
         margin-left: 0;
+        background: url(img/task09-mainpart02-01.png) no-repeat center #FFF;
     }
     .part2 li:nth-child(2){
         border-top: 5px solid #4388c9;
     }
 
     .part2 li:nth-child(8){
-        flex: 1;
+        flex-grow: 1;
+        background: url(img/task09-mainpart02-02.png) no-repeat center #FFF;
     }
     .part2 li:last-child{
-        flex: 6;
+        display: flex;
+        flex-grow: 3;
         margin-right: 0;
+        align-items: center;
+        justify-content: center;
+    }
+    .part2 li:last-child span{
+        font-size: 1rem;
     }
     .part2 li p:nth-child(1){
         color: #000;
     }
+    .part2 li p:nth-child(2){
+        font-size: 1rem;
+    }
     .part2 li span{
         font-size: 1.2rem;
         color: #ed6300;
+    }
+    /*——————————————————————————————part2 end, part3 start————————————————————————————*/
+    .part3{
+        margin-top: 30px;
+        font-size: 1rem;
+    }
+    .part3>p{
+        color: #000;
+    }
+    .part3 ul{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .part3 ul li{
+        width: 200px;
+        padding: 10px 0;
+        background-color: #FFF;
+        box-shadow: 10px 10px 5px #888;
+        display: flex;
+
+    }
+    .part3 ul li:nth-child(1){
+        border-left: 5px solid #43b29e;
+    }
+    .part3 ul li:nth-child(2){
+        border-left: 5px solid #388ac1;
+    }
+    .part3 ul li:nth-child(3){
+        border-left: 5px solid #d04a36;
+    }
+    .part3 ul li:nth-child(4){
+        border-left: 5px solid #e2cd46;
+    }
+    .part3 ul li div:nth-child(1){
+        flex-grow: 1;
+        margin-left: 10px;
+        margin-right: 20px;
+    }
+    .part3 ul li div:nth-child(1) p:nth-child(1){
+        color: #000;
+    }
+    .part3 ul li div:nth-child(1) p:nth-child(2){
+        font-size: .9rem;
+    }
+    .part3 ul li>div:nth-child(2){
+        flex-grow: 1;
+        width: 60px;
+        height: 50px;
+        margin-right: 40px;
+        background-color: #43b29e;
+    }
+    .part3 ul li:nth-child(2)>div:nth-child(2){
+        background-color: #388ac1;
+    }
+    .part3 ul li:nth-child(3)>div:nth-child(2){
+        background-color: #d04a36;
+    }
+    .part3 ul li:nth-child(4)>div:nth-child(2){
+        background-color: #e2cd46;
+    }
+    /*——————————————————————————————part3 end, part4 start————————————————————————————*/
+    .part4{
+        width: 600px;
+        height: 330px;
+    }
+    .part4>p{
+        font-size: 1rem;
+        padding: 15px;
+        background-color: #f4f5f7;
+    }
+    .part4-list{
+        display: flex;
+        margin: 15px 60px 20px 60px;
+        justify-content: space-between;
+    }
+    .part4-list li{
+        width: 92px;
+        height: 30px;
+        text-align: center;
+        padding-top: 7px;
+        background-color: #d6d6de;
+        font-size: 1rem;
+        color: #697a8e;
     }
 </style>
 <body>
@@ -323,8 +417,6 @@
                 </ul>
 
             </div>
-
-
         </div>
         <div class="main">
             <div class="main-header">
@@ -402,9 +494,7 @@
                 </div>
                 <ul class="part2">
                         <li>
-                            <a href="#">
-                                <img src="img/task09-mainpart02-01.png">
-                            </a>
+                            <a href="#"></a>
                         </li>
                         <li>
                             <p>10:00 am</p>
@@ -419,25 +509,69 @@
                             <p>￥<span>1200</span></p>
                         </li>
                         <li>
-                            <p>01:00 am</p>
+                            <p>01:00 pm</p>
                             <p>￥<span>1200</span></p>
                         </li>
                         <li>
-                            <p>02:00 am</p>
+                            <p>02:00 pm</p>
                             <p>￥<span>1200</span></p>
                         </li>
                         <li>
-                            <p>03:00 am</p>
+                            <p>03:00 pm</p>
                             <p>￥<span>1200</span></p>
                         </li>
-                        <li>
-                            <img src="img/task09-mainpart02-02.png">
-                        </li>
+                        <li></li>
                         <li>
                             <img src="img/task09-mainpart02-03.png">
                             <span>历史查询</span>
                         </li>
                 </ul>
+                <div class="part3">
+                    <p>2016年4月份统计</p>
+                    <ul>
+                        <li>
+                            <div>
+                                <p>133311</p>
+                                <p>成交量</p>
+                            </div>
+                            <div></div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>133311</p>
+                                <p>成交量</p>
+                            </div>
+                            <div></div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>133311</p>
+                                <p>成交量</p>
+                            </div>
+                            <div></div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>133311</p>
+                                <p>成交量</p>
+                            </div>
+                            <div></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="part4">
+                    <p>第一组项目</p>
+                    <div >
+                        <ul class="part4-list">
+                            <li>项目一</li>
+                            <li>项目二</li>
+                            <li>项目三</li>
+                            <li>项目四</li>
+                            <li>项目五</li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
 
         </div>
