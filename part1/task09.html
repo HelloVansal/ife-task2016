@@ -49,7 +49,7 @@
         border-radius: 15px;
         outline: none;
         border: none;
-        background: url("./img/task09-header02.png") no-repeat 5px 5px #FFF;
+        background: url("../img/task09-header02.png") no-repeat 5px 5px #FFF;
     }
     .header>input:focus{
         transition: all 1s;
@@ -121,11 +121,11 @@
         text-indent: 3rem;
     }
     .aside-list li:nth-child(2), .aside-list li:nth-child(6){
-        background: url("img/task09-aside04.png") no-repeat 56px #383d4e;
+        background: url("../img/task09-aside04.png") no-repeat 56px #383d4e;
         text-indent: 2rem;
     }
     .aside-list li:nth-child(2):hover, .aside-list li:nth-child(6):hover{
-        background: url("img/task09-aside11.png") no-repeat 56px #383d4e;
+        background: url("../img/task09-aside11.png") no-repeat 56px #383d4e;
     }
     .aside-list-folder, .aside-list li:first-child, .aside-list-file{
         background-color: #383d4e;
@@ -165,7 +165,7 @@
         bottom: 30px;
         left: 20px;
     }
-    .part1, .part4, .part5, .part6{
+    .part1, .part4, .part5, .part6, .part7{
         margin-top: 30px;
         background-color: #FFF;
         box-shadow: 10px 10px 5px #888;
@@ -228,7 +228,7 @@
     .part2 li:nth-child(1){
         flex-grow: 1;
         margin-left: 0;
-        background: url(img/task09-mainpart02-01.png) no-repeat center #FFF;
+        background: url(../img/task09-mainpart02-01.png) no-repeat center #FFF;
     }
     .part2 li:nth-child(2){
         border-top: 5px solid #4388c9;
@@ -236,7 +236,7 @@
 
     .part2 li:nth-child(8){
         flex-grow: 1;
-        background: url(img/task09-mainpart02-02.png) no-repeat center #FFF;
+        background: url(../img/task09-mainpart02-02.png) no-repeat center #FFF;
     }
     .part2 li:last-child{
         display: flex;
@@ -325,7 +325,7 @@
         height: 330px;
         margin-right: 20px;
     }
-    .part4>p, .part5>p, .part6>p{
+    .part4>p, .part5>p, .part6>p, .part7>p{
         font-size: 1rem;
         padding: 15px;
         background-color: #f4f5f7;
@@ -347,8 +347,8 @@
         color: #697a8e;
         font-size: 1rem;
         padding-top: 8px;
-        width: 92px;
-        height: 30px;
+        width: 90px;
+        height: 28px;
     }
     .part4-list li a:focus{
         background-color: #fff;
@@ -405,6 +405,7 @@
         width: 60px;
         height: 30px;
         border: none;
+        outline: none;
         background-color: #388ac1;
         color: #FFF;
     }
@@ -418,6 +419,7 @@
     .part6{
         float: left;
         width: 360px;
+        margin-right: 20px;
     }
     .part6-wrapper{
         color: #000;
@@ -431,7 +433,7 @@
         border: 1px solid #eee;
         padding: 3px 12px;
         margin: 7px 0;
-        background: url("img/task09-mainpart06-01.png") no-repeat right;
+        background: url("../img/task09-mainpart06-01.png") no-repeat right;
     }
     .part6-date span:last-child{
         background: none;
@@ -451,28 +453,116 @@
     .part6-day li{
         width: 46px;
         height: 35px;
+        margin-top: 2px;
         float: left;
+        box-sizing: border-box;
         text-align: center;
     }
     .part6-day .weekend p:first-child, .part6-day li:nth-child(9) p:first-child{
-        color: red;
+        color: #ce343c;
     }
     .part6-day li:nth-child(5) p:nth-child(2), .part6-day li:nth-child(9) p:nth-child(2), .part6-day li:nth-child(14) p:nth-child(2){
-        color: red;
+        color: #ce343c;
     }
+    .part6-day li:nth-child(13), .part6-day li:nth-child(16), .part6-day li:nth-child(23){
+        border: 1px solid #f5c11d;
+    }
+    /*——————————————————————————————part6 end, part7 start————————————————————————————*/
+    .part7{
+        float: left;
+        width: 600px;
+    }
+    .part7 table{
+        margin: 25px 40px;
+        width: 520px;
+        text-align: center;
+        color: #000;
+    }
+    .part7 table tr th:nth-child(1), .part7 table tr th:nth-child(2){
+        width: 100px;
+    }
+    .part7 table td, .part7 table th{
+        border: 1px solid #eee;
+    }
+    .part7 table .quantity{
+        display: inline-block;
+        width: 100px;
+        font-weight: bold;
+    }
+    .part7 table .bgc{
+        display: inline-block;
+        width: 150px;
+        height: 6px;
+        background-color: #eee;
+    }
+    .part7 .bgc span{
+        float: left;
+        display: inline-block;
+        height: 6px;
+    }
+    .part7 tr:nth-child(2) .bgc span{
+        width: 80%;
+        background-color: #ee6e53;
+    }
+    .part7 tr:nth-child(3) .bgc span{
+        width: 76%;
+        background-color: #ef8150;
+    }
+    .part7 tr:nth-child(4) .bgc span{
+        width: 60%;
+        background-color: #f19e4e;
+    }
+    .part7 tr:nth-child(5) .bgc span{
+        width: 50%;
+        background-color: #7fcbef;
+    }
+    .part7 tr:nth-child(6) .bgc span{
+        width: 40%;
+        background-color: #7fcbef;
+    }
+    .part7 tr:nth-child(7) .bgc span{
+        width: 36%;
+        background-color: #7fcbef;
+    }
+    .part7 tr:nth-child(8) .bgc span{
+        width: 30%;
+        background-color: yellow;
+    }
+    .part7 tr:nth-child(9) .bgc span{
+        width: 26%;
+        background-color: yellow;
+    }
+    .part7 tr:nth-child(10) .bgc span{
+        width: 20%;
+        background-color: yellow;
+    }
+    .part7 tr:nth-child(11) .bgc span{
+        width: 16%;
+        background-color: green;
+    }
+    .part7 table th{
+        font-size: 1rem;
+    }
+    .part7 table tr:hover{
+        background-color: #eee;
+    }
+    .part7 table tr td:first-child{
+        font-weight: bold;
+    }
+
 </style>
 <body>
     <div class="header">
-        <img src="img/logo.png">
+        <img src="../img/logo.png">
         <input type="text">
         <div class="sign-in">
-            <img src="img/task09-header01.png"><a href="#">登录</a>
+            <img src="../img/task09-header01.png"><a href="#">登录</a>
         </div>
     </div>
     <div class="wrapper">
         <div class="aside">
             <div class="aside-header">
-                <img src="img/Vansal.jpg">
+                <img src="../img/Vansal.jpg">
                 <span>Vansal</span>
                 <div>
                     <div class="aside-header-left">
@@ -488,48 +578,48 @@
             <div class="aside-list">
                 <ul>
                     <li>
-                        <img src="img/task09-aside02.png">
+                        <img src="../img/task09-aside02.png">
                         <span>个人报表</span>
                     </li>
                     <li class="aside-list-folder">
-                        <img src="img/task09-aside01.png">
+                        <img src="../img/task09-aside01.png">
                         <span>文件夹一</span>
                     </li>
                     <li class="aside-list-folder">
-                        <img src="img/task09-aside11.png">
-                        <img src="img/task09-aside02.png">
+                        <img src="../img/task09-aside11.png">
+                        <img src="../img/task09-aside02.png">
                         <span>文件夹二</span>
                     </li>
                     <li class="aside-list-file">
-                        <img src="img/task09-aside05.png">
+                        <img src="../img/task09-aside05.png">
                         <span>文档1</span>
                     </li>
                     <li class="aside-list-file">
-                        <img src="img/task09-aside05.png">
+                        <img src="../img/task09-aside05.png">
                         <span>文档2</span>
                     </li>
                     <li class="aside-list-folder">
-                        <img src="img/task09-aside01.png">
+                        <img src="../img/task09-aside01.png">
                         <span>文件夹三</span>
                     </li>
                     <li>
-                        <img src="img/task09-aside07.png">
+                        <img src="../img/task09-aside07.png">
                         <span>个人收藏</span>
                     </li>
                     <li>
-                        <img src="img/task09-aside08.png">
+                        <img src="../img/task09-aside08.png">
                         <span>我的分享</span>
                     </li>
                     <li>
-                        <img src="img/task09-aside07.png">
+                        <img src="../img/task09-aside07.png">
                         <span>图库</span>
                     </li>
                     <li>
-                        <img src="img/task09-aside07.png">
+                        <img src="../img/task09-aside07.png">
                         <span>成长记录</span>
                     </li>
                     <li>
-                        <img src="img/task09-aside03.png">
+                        <img src="../img/task09-aside03.png">
                         <span>账户信息</span>
                     </li>
                 </ul>
@@ -570,7 +660,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <img src="img/task09-mainpart01-01.png">
+                            <img src="../img/task09-mainpart01-01.png">
                         </li>
                         <li>
                             <div>
@@ -640,7 +730,7 @@
                         </li>
                         <li></li>
                         <li>
-                            <img src="img/task09-mainpart02-03.png">
+                            <img src="../img/task09-mainpart02-03.png">
                             <span>历史查询</span>
                         </li>
                 </ul>
@@ -898,6 +988,117 @@
                             </li>
                             <li></li>
                         </ul>
+
+                </div>
+                <div class="part7">
+                    <p>汽车行业品牌榜</p>
+                    <table>
+                        <tr>
+                            <th>排名</th>
+                            <th>品牌</th>
+                            <th>搜索指数</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>大众</td>
+                            <td>
+                                <span class="quantity">304231232</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>丰田</td>
+                            <td>
+                                <span class="quantity">293073333</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>奥迪</td>
+                            <td>
+                                <span class="quantity">231390704</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>本田</td>
+                            <td>
+                                <span class="quantity">22885564</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>福特</td>
+                            <td>
+                                <span class="quantity">22324792</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>宝马</td>
+                            <td>
+                                <span class="quantity">21444077</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>现代</td>
+                            <td>
+                                <span class="quantity">20114969</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>起亚</td>
+                            <td>
+                                <span class="quantity">19251680</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>奔驰</td>
+                            <td>
+                                <span class="quantity">19172837</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>别克</td>
+                            <td>
+                                <span class="quantity">18544027</span>
+                                <span class="bgc">
+                                    <span></span>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
 
                 </div>
             </div>
