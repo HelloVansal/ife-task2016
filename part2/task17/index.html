@@ -3,8 +3,31 @@
 <head>
     <meta charset="utf-8">
     <title>任务十七：零基础JavaScript编码（五）</title>
-    <script src="task.js"></script>
 </head>
+<style>
+    ul{
+        padding: 0;
+        margin: 50px 5px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: 350px;
+    }
+    ul li{
+        font-size: .6rem;
+        margin: 0;
+        padding: 0;
+    }
+    ul li div:first-child{
+        width: 14px;
+        align-self: flex-end;
+        margin-bottom: 5px;
+    }
+    ul li div:nth-child(2){
+        text-align: center;
+    }
+</style>
 <body>
 <fieldset id="form-gra-time">
     <legend>请选择日期粒度：</legend>
@@ -16,11 +39,20 @@
 <fieldset>
     <legend>请选择查看的城市：</legend>
     <select id="city-select">
-        <option>北京</option>
+        <option value="beijing">北京</option>
+        <option value="shanghai">上海</option>
+        <option value="guangzhou">广州</option>
+        <option value="shenzheng">深圳</option>
+        <option value="chengdu">成都</option>
+        <option value="xian">西安</option>
+        <option value="fuzhou">福州</option>
+        <option value="xiamen">厦门</option>
+        <option value="shenyang">沈阳</option>
     </select>
 </fieldset>
 
 <div class="aqi-chart-wrap">
 </div>
+<script src="task.js"></script>
 </body>
 </html>

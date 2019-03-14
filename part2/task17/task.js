@@ -50,12 +50,30 @@ var pageState = {
     nowSelectCity: -1,
     nowGraTime: "day"
 };
-
+//随机颜色
+function randomColor() {
+    return 'rgba(' + Math.ceil(Math.random()*220) + ',' + Math.ceil(Math.random()*220) + ',' + Math.ceil(Math.random()*220) + ',0.6' + ')'
+}
 /**
  * 渲染图表
  */
-function renderChart() {
+let ul = document.createElement('ul');
+let chart_wrap = document.getElementsByClassName('aqi-chart-wrap')[0];
+let chart = chart_wrap.appendChild(ul);
 
+function renderChart(days, seeds) {
+    //将天数渲染进图表
+    let all = '';
+    for(let i in days){
+        all += '<li><div class="chart_display"></div><div>' + days[i] + '</div></li>';
+    }
+    chart.innerHTML = all;
+    //将粒度的高度和颜色渲染进图表
+    let chart_display = document.getElementsByClassName('chart_display');
+    for(let i in chart_display){
+        chart_display[i].style.height = seeds[i] * 0.7;
+        chart_display[i].style.backgroundColor = randomColor();
+    }
 }
 
 /**
@@ -66,18 +84,29 @@ function graTimeChange() {
 
     // 设置对应数据
 
+
     // 调用图表渲染函数
 }
-
 /**
  * select发生变化时的处理函数
  */
+let select = document.getElementById('city-select');
+select.onchange = function () {
+    citySelectChange();
+};
 function citySelectChange() {
     // 确定是否选项发生了变化
-
+    let city = select.options[select.selectedIndex].innerHTML;
     // 设置对应数据
-
+    let cityData =  aqiSourceData[city];
+    let days = [];
+    let seeds = [];
+    for(let date in cityData){
+        days.push(date.slice(8));
+        seeds.push(cityData[date]);
+    }
     // 调用图表渲染函数
+    renderChart(days, seeds);
 }
 
 /**
