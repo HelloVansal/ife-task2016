@@ -68,7 +68,7 @@ function renderChart(days, seeds) {
         all += '<li><div class="chart_display"></div><div>' + days[i] + '</div></li>';
     }
     chart.innerHTML = all;
-    //将粒度的高度和颜色渲染进图表
+    //将粒度的高度和颜色渲染进图表;
     let chart_display = document.getElementsByClassName('chart_display');
     for(let i in chart_display){
         chart_display[i].style.height = seeds[i] * 0.7;
@@ -87,16 +87,14 @@ function graTimeChange() {
 
     // 调用图表渲染函数
 }
+
 /**
  * select发生变化时的处理函数
  */
 let select = document.getElementById('city-select');
-select.onchange = function () {
-    citySelectChange();
-};
-function citySelectChange() {
+
+function citySelectChange(city) {
     // 确定是否选项发生了变化
-    let city = select.options[select.selectedIndex].innerHTML;
     // 设置对应数据
     let cityData =  aqiSourceData[city];
     let days = [];
@@ -121,10 +119,14 @@ function initGraTimeForm() {
  */
 function initCitySelector() {
     // 读取aqiSourceData中的城市，然后设置id为city-select的下拉列表中的选项
-
-    // 给select设置事件，当选项发生变化时调用函数citySelectChange
-
+    let city = select.options[select.selectedIndex].innerHTML;
+    citySelectChange(city);
 }
+// 给select设置事件，当选项发生变化时调用函数citySelectChange
+select.onchange = function () {
+    let city = select.options[select.selectedIndex].innerHTML;
+    citySelectChange(city);
+};
 
 /**
  * 初始化图表需要的数据格式
