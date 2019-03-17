@@ -11,17 +11,17 @@ var aqiSourceData = {
 
 // 以下两个函数用于随机模拟生成测试数据
 function getDateStr(dat) {
-    var y = dat.getFullYear();
-    var m = dat.getMonth() + 1;
+    let y = dat.getFullYear();
+    let m = dat.getMonth() + 1;
     m = m < 10 ? '0' + m : m;
-    var d = dat.getDate();
+    let d = dat.getDate();
     d = d < 10 ? '0' + d : d;
     return y + '-' + m + '-' + d;
 }
 function randomBuildData(seed) {
-    var returnData = {};
-    var dat = new Date("2016-01-01");
-    var datStr = '';
+    let returnData = {};
+    let dat = new Date("2016-01-01");
+    let datStr = '';
     for (var i = 1; i < 92; i++) {
         datStr = getDateStr(dat);
         returnData[datStr] = Math.ceil(Math.random() * seed);
@@ -30,7 +30,7 @@ function randomBuildData(seed) {
     return returnData;
 }
 
-var aqiSourceData = {
+let aqiSourceData = {
     "北京": randomBuildData(500),
     "上海": randomBuildData(300),
     "广州": randomBuildData(200),
@@ -41,39 +41,34 @@ var aqiSourceData = {
     "厦门": randomBuildData(100),
     "沈阳": randomBuildData(500)
 };
+function randomColor() {
+    let color = {
+        r: Math.floor(Math.random() * 250),
+        g: Math.floor(Math.random() * 250),
+        b: Math.floor(Math.random() * 250),
+    };
+    return color.r + ',' + color.g + ',' + color.b;
+}
 
 // 用于渲染图表的数据
-var chartData = {};
+let chartData = {};
 
 // 记录当前页面的表单选项
-var pageState = {
+let pageState = {
     nowSelectCity: -1,
     nowGraTime: "day"
 };
-//随机颜色
-function randomColor() {
-    return 'rgba(' + Math.ceil(Math.random()*220) + ',' + Math.ceil(Math.random()*220) + ',' + Math.ceil(Math.random()*220) + ',0.6' + ')'
-}
+
 /**
  * 渲染图表
  */
-let ul = document.createElement('ul');
-let chart_wrap = document.getElementsByClassName('aqi-chart-wrap')[0];
-let chart = chart_wrap.appendChild(ul);
+function renderChart() {
+    let yC = document.getElementById('y-coor');
+    let chart_wrap = document.getElementById('aqi-chart-wrap');
+    let nowSelectCity = pageState['nowSelectCity'];
 
-function renderChart(days, seeds) {
-    //将天数渲染进图表
-    let all = '';
-    for(let i in days){
-        all += '<li><div class="chart_display"></div><div>' + days[i] + '</div></li>';
-    }
-    chart.innerHTML = all;
-    //将粒度的高度和颜色渲染进图表;
-    let chart_display = document.getElementsByClassName('chart_display');
-    for(let i in chart_display){
-        chart_display[i].style.height = seeds[i] * 0.7;
-        chart_display[i].style.backgroundColor = randomColor();
-    }
+
+
 }
 
 /**
@@ -84,34 +79,28 @@ function graTimeChange() {
 
     // 设置对应数据
 
-
     // 调用图表渲染函数
 }
 
 /**
  * select发生变化时的处理函数
  */
-let select = document.getElementById('city-select');
-
-function citySelectChange(city) {
+function citySelectChange() {
     // 确定是否选项发生了变化
+
     // 设置对应数据
-    let cityData =  aqiSourceData[city];
-    let days = [];
-    let seeds = [];
-    for(let date in cityData){
-        days.push(date.slice(8));
-        seeds.push(cityData[date]);
-    }
+
     // 调用图表渲染函数
-    renderChart(days, seeds);
 }
 
 /**
  * 初始化日、周、月的radio事件，当点击时，调用函数graTimeChange
  */
 function initGraTimeForm() {
-
+    let form_gra_time = document.getElementById('form-gra-time');
+    form_gra_time.onchange = function () {
+        graTimeChange();
+    }
 }
 
 /**
@@ -119,14 +108,18 @@ function initGraTimeForm() {
  */
 function initCitySelector() {
     // 读取aqiSourceData中的城市，然后设置id为city-select的下拉列表中的选项
-    let city = select.options[select.selectedIndex].innerHTML;
-    citySelectChange(city);
+    let cities = '';
+    for(let city in aqiSourceData){
+        cities += '<option>' + city + '</option>';
+    }
+    let city_select = document.getElementById('city-select');
+    city_select.innerHTML = cities;
+    // 给select设置事件，当选项发生变化时调用函数citySelectChange
+    city_select.onchange = function () {
+        citySelectChange();
+    }
+
 }
-// 给select设置事件，当选项发生变化时调用函数citySelectChange
-select.onchange = function () {
-    let city = select.options[select.selectedIndex].innerHTML;
-    citySelectChange(city);
-};
 
 /**
  * 初始化图表需要的数据格式
@@ -134,6 +127,83 @@ select.onchange = function () {
 function initAqiChartData() {
     // 将原始的源数据处理成图表需要的数据格式
     // 处理好的数据存到 chartData 中
+    let day = {}; //创建天为单位的数组
+
+    let week = {}; //创建周为单位的数组
+    let weekNum = 1; //计数多少周
+    let weekTotal = 0;
+    let weekDays = 0; //满7为一个自然周
+
+    let month = {}; //创建月为单位的数组
+    let monthNum = 1;
+    let monthTotal = 0; //一个月的总的空气指数
+
+    for (let city in aqiSourceData){
+        //先遍历声明日、周、月的数组
+        day[city] = {};
+        week[city] = {};
+        month[city] = {};
+        for(let date in aqiSourceData[city]){
+            //date为每天的日期
+            let sourceData = aqiSourceData[city][date];  //sourceDate为每天的空气质量的数据
+            //每日数据
+            let dayGet = {};
+            dayGet['date'] = date.slice(8); //每天的日期从第八位开始
+            dayGet['data'] = sourceData; //把数据赋给data属性
+            dayGet['height'] = sourceData * 0.75 + "px"; //把数据值乘以0.75赋给height，给以后动态调用
+            dayGet['width'] = '14px'; //每日数据的宽度设为14px
+            dayGet['color'] = randomColor();
+            dayGet['title'] = city + date; //传入当前的城市和日期
+            day[city][date] = dayGet; //把dayGet所获得的动态数组赋给day数组的当前值
+
+            //每周数据
+            weekTotal += sourceData;
+            let weekGet = {};
+            if(weekDays === 7 || date === '2016-3-31'){
+                let weekData = (weekTotal/7).toFixed(2);
+                weekGet['date'] = '第' + weekNum + '周';
+                weekGet['data'] = weekData;
+                weekGet['height'] = sourceData * 0.75 + "px"; //把数据值乘以0.75赋给height，给以后动态调用
+                weekGet['width'] = '50px'; //每日数据的宽度设为14px
+                weekGet['color'] = randomColor();
+                weekGet['title'] = city + date; //传入当前的城市和日期
+                week[city][weekGet['date']] = weekGet;
+                weekTotal = 0;
+                weekDays = 0;
+                weekNum++;
+            }
+            weekDays++;
+            /*每月数据*/
+            monthTotal += sourceData;
+            if (date === '2016-01-31' || date === '2016-03-31' || date === '2016-02-29') {
+                let monthData = 0;
+                if (date === '2016-02-29') {
+                    monthData = (monthTotal / 29).toFixed(2);
+                } else {
+                    monthData = (monthTotal / 31).toFixed(2);
+                }
+                let monthGet = {}; //声明一个数组暂时存放需要的数据
+                monthGet['date'] = "第" + monthNum + "月"; //传入当前的日期
+                monthGet['data'] = monthData; //把数据赋给date属性
+                monthGet['height'] = monthData * 0.75 + "px"; //把数据值乘以0.75赋给height，给以后动态调用
+                monthGet['width'] = '100px'; //每日数据的宽度设为10px
+                monthGet['color'] = randomColor();
+                monthGet['title'] = city + monthGet['date']; //传入当前的城市和日期
+
+                month[city][monthGet['date']] = monthGet;
+                monthTotal = 0;
+                monthNum++;
+            }
+        }
+        //周数和月数初始化，否则轮到上海周数据的时候第一周就显示成10多周了
+        weekNum = 1;
+        monthNum = 1
+    }
+
+    chartData.day = day;
+    chartData.week = week;
+    chartData.month = month;
+    console.log(chartData);
 }
 
 /**
