@@ -22,7 +22,7 @@ function randomBuildData(seed) {
     let returnData = {};
     let dat = new Date("2016-01-01");
     let datStr = '';
-    for (var i = 1; i < 92; i++) {
+    for (let i = 1; i < 92; i++) {
         datStr = getDateStr(dat);
         returnData[datStr] = Math.ceil(Math.random() * seed);
         dat.setDate(dat.getDate() + 1);
@@ -47,7 +47,7 @@ function randomColor() {
         g: Math.floor(Math.random() * 250),
         b: Math.floor(Math.random() * 250),
     };
-    return color.r + ',' + color.g + ',' + color.b;
+    return 'RGBA(' + color.r + ',' + color.g + ',' + color.b + ',0.6)';
 }
 
 // 用于渲染图表的数据
@@ -68,37 +68,49 @@ function renderChart() {
 	let nowSelectCity = pageState['nowSelectCity'];
 	let nowGraTime = pageState['nowGraTime'];
 	let graData = chartData[nowGraTime][nowSelectCity];
-	console.log(graData);
 	let all = '';
-	for(let i in graData){
-		all += '<div></div>' + '<div>' + graData[i]['date'] + '</div>';
+    let width = [];
+    let height = [];
+    for(let i in graData){
+        all += '<li><div class="display"></div>' + '<div>' + graData[i]['date'] + '</div></li>';
+        width.push(graData[i]['width']);
+        height.push(graData[i]['height']);
 	}
-	chart_wrap.innerHTML = all;
-
-	
-
+    chart_wrap.innerHTML = all;
+    let display = chart_wrap.getElementsByClassName('display');
+    for(let i in height ){
+        display[i].style.width = width[i];
+        display[i].style.height = height[i];
+        display[i].style.backgroundColor = randomColor();
+    }
 }
 
 /**
  * 日、周、月的radio事件点击时的处理函数
  */
-function graTimeChange() {
+function graTimeChange(e) {
     // 确定是否选项发生了变化
-
+    if (pageState["nowGraTime"] === e.target.value) {
+        return false
+    }
     // 设置对应数据
-
+    pageState["nowGraTime"] = e.target.value;
     // 调用图表渲染函数
+    renderChart();
 }
 
 /**
  * select发生变化时的处理函数
  */
-function citySelectChange() {
+function citySelectChange(e) {
     // 确定是否选项发生了变化
-
+    if (pageState["nowSelectCity"] === e.target.value) {
+        return false
+    }
     // 设置对应数据
-
+    pageState["nowSelectCity"] = e.target.value;
     // 调用图表渲染函数
+    renderChart();
 }
 
 /**
@@ -106,8 +118,8 @@ function citySelectChange() {
  */
 function initGraTimeForm() {
     let form_gra_time = document.getElementById('form-gra-time');
-    form_gra_time.onchange = function () {
-        graTimeChange();
+    form_gra_time.onchange = function (e) {
+        graTimeChange(e);
     }
 }
 
@@ -123,10 +135,9 @@ function initCitySelector() {
     let city_select = document.getElementById('city-select');
     city_select.innerHTML = cities;
     // 给select设置事件，当选项发生变化时调用函数citySelectChange
-    city_select.onchange = function () {
-        citySelectChange();
+    city_select.onchange = function (e) {
+        citySelectChange(e);
     }
-
 }
 
 /**
@@ -158,7 +169,7 @@ function initAqiChartData() {
             let dayGet = {};
             dayGet['date'] = date.slice(8); //每天的日期从第八位开始
             dayGet['data'] = sourceData; //把数据赋给data属性
-            dayGet['height'] = sourceData * 0.75 + "px"; //把数据值乘以0.75赋给height，给以后动态调用
+            dayGet['height'] = sourceData * 0.7 + "px"; //把数据值乘以0.75赋给height，给以后动态调用
             dayGet['width'] = '14px'; //每日数据的宽度设为14px
             dayGet['color'] = randomColor();
             dayGet['title'] = city + date; //传入当前的城市和日期
@@ -194,7 +205,7 @@ function initAqiChartData() {
                 monthGet['date'] = "第" + monthNum + "月"; //传入当前的日期
                 monthGet['data'] = monthData; //把数据赋给date属性
                 monthGet['height'] = monthData * 0.75 + "px"; //把数据值乘以0.75赋给height，给以后动态调用
-                monthGet['width'] = '100px'; //每日数据的宽度设为10px
+                monthGet['width'] = '70px'; //每日数据的宽度设为10px
                 monthGet['color'] = randomColor();
                 monthGet['title'] = city + monthGet['date']; //传入当前的城市和日期
 
@@ -207,11 +218,9 @@ function initAqiChartData() {
         weekNum = 1;
         monthNum = 1
     }
-
     chartData.day = day;
     chartData.week = week;
     chartData.month = month;
-    console.log(chartData);
 }
 
 /**
