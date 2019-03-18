@@ -65,9 +65,17 @@ let pageState = {
 function renderChart() {
     let yC = document.getElementById('y-coor');
     let chart_wrap = document.getElementById('aqi-chart-wrap');
-    let nowSelectCity = pageState['nowSelectCity'];
+	let nowSelectCity = pageState['nowSelectCity'];
+	let nowGraTime = pageState['nowGraTime'];
+	let graData = chartData[nowGraTime][nowSelectCity];
+	console.log(graData);
+	let all = '';
+	for(let i in graData){
+		all += '<div></div>' + '<div>' + graData[i]['date'] + '</div>';
+	}
+	chart_wrap.innerHTML = all;
 
-
+	
 
 }
 
@@ -213,6 +221,10 @@ function init() {
     initGraTimeForm();
     initCitySelector();
     initAqiChartData();
+	if(pageState['nowSelectCity'] === -1){
+		pageState['nowSelectCity'] = '北京';
+		renderChart();
+	}
 }
 
 init();
