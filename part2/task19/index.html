@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务十九：基础JavaScript练习（二）</title>
+</head>
+<style>
+    ul{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin: 50px 0 0 0;
+        padding: 0;
+        list-style: none;
+        height: 100px;
+        background-color: #ccc;
+    }
+    ul li{
+        margin:  0 1px;
+        padding: 0;
+        width: 15px;
+        background-color: red;
+    }
+</style>
+<body>
+<div id="handle">
+    <input type="text" placeholder="请输入10-100的整数">
+    <button id="leftIn">左侧入</button>
+    <button id="rightIn">右侧入</button>
+    <button id="leftOut">左侧出</button>
+    <button id="rightOut">右侧出</button>
+    <button id="random">随机60个数字</button>
+    <input type="text" placeholder="排序速度，默认50">
+    <button id="sort">排序</button>
+    <button id="reload">刷新页面</button>
+</div>
+
+<ul id="output">
+
+</ul>
+<script src="task.js"></script>
+</body>
+</html>
