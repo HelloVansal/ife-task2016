@@ -1,14 +1,9 @@
-let leftIn = document.getElementById('leftIn');
-let rightIn = document.getElementById('rightIn');
-let leftOut = document.getElementById('leftOut');
-let rightOut = document.getElementById('rightOut');
-
 let output = document.getElementById('output');
 let li = output.getElementsByTagName('li');
 let value = '';
-let data = [];
+let data = [];  //记录所有整数存储或删除的数组
 
-//整数join函数
+//定义整数加入操作函数
 function join(position){
     let inputValue = document.getElementsByTagName('input')[0].value;
     if(!/^\d+$/.test(inputValue) || inputValue<10 || inputValue>100 ){
@@ -21,9 +16,9 @@ function join(position){
     }
 }
 
-//按钮点击时调用join函数
-leftIn.onclick = function (){
-    if(random.onclick){
+//左侧入按钮点击时判断是否调用join函数
+document.getElementById('leftIn').onclick = function (){
+    if(randomOnclick){
         alert('已随机选取数字，无法手动添加');
     }
     else if(data.length<=60){
@@ -34,9 +29,9 @@ leftIn.onclick = function (){
         alert('做多可以输入60个数字');
     }
 };
-
-rightIn.onclick = function (){
-    if(random.onclick){
+//右侧入按钮点击时判断是否调用join函数
+document.getElementById('rightIn').onclick = function (){
+    if(randomOnclick){
         alert('已随机选取数字，无法手动添加');
     }
     else if(data.length<=60) {
@@ -47,7 +42,8 @@ rightIn.onclick = function (){
         alert('做多可以输入60个数字');
     }
 };
-//整数leave函数
+
+//定义整数删除操作函数
 function leave(positionDesc, position){
     if(li.length === 0){
         alert('还没数字请先输入！"')
@@ -57,43 +53,69 @@ function leave(positionDesc, position){
         output.removeChild(li[position]);
     }
 }
-//按钮点击时调用leave函数
-leftOut.onclick = function (){
+
+//左侧出和右侧出按钮点击时调用leave函数
+document.getElementById('leftOut').onclick = function (){
     leave('左', '0');
     data.shift();
 };
 
-rightOut.onclick = function (){
+document.getElementById('rightOut').onclick = function (){
     leave('右', li.length-1);
     data.pop();
 };
 
-//随机按钮操作
-let random = document.getElementById('random');
-
-random.onclick = function () {
-    output.innerHTML = '';
-    for(let i=0; i<60; i++){
-        let random = 10 + parseInt(Math.random() * 90);
-        data.push(random);
-        output.insertAdjacentHTML("beforeend", '<li style="height:'  + random + 'px;">' + '</li>');
+//随机数按钮操作
+//设置随机数按钮点击后不能自行加入数字
+let randomOnclick = false;
+document.getElementById('random').onclick = function () {
+    randomOnclick = true;
+    if(sortBtnOnClick){
+        output.innerHTML = '';
+        data = [];
+        for(let i=0; i<60; i++){
+            let random = 10 + parseInt(Math.random() * 90);
+            data.push(random);
+            output.insertAdjacentHTML("beforeend", '<li style="height:'  + random + 'px;">' + '</li>');
+        }
     }
 };
 
-//冒泡排序
-let sort = document.getElementById('sort');
-sort.onclick = function () {
-    output.innerHTML = '';
-    if(data.length > 10){
-        for(let i in data){
-            for(let j=1; j<data.length-i; j++){
-                if(data[j-1] > data[j]){
-                    let max = data[j-1];
-                    data[j-1] = data[j];
-                    data[j] = max;
-                }
+//定义冒泡排序函数
+function funcSort(inputSpeed){
+    let x = 0;
+    for(let i in li){
+        for(let j=0; j<li.length-i-1; j++){
+            function sort() {
+                setTimeout(function () {
+                    if(parseInt(li[j].style.height) > parseInt(li[j + 1].style.height)){
+                        let max = li[j];
+                        li[j] = li[j+1];
+                        li[j+1] = max;
+                        output.insertBefore(li[j+1], li[j]);
+                    }
+                },x * inputSpeed)
             }
-            output.insertAdjacentHTML("afterbegin", '<li style="height:'  + data[data.length-i] + 'px;">' + '</li>');
+            sort();
+            x++;
         }
     }
 }
+
+//设置排序按钮点击后随机数按钮不能点击
+let sortBtnOnClick = true;
+document.getElementById('sort').onclick = function () {
+    sortBtnOnClick = false;
+    let inputSpeed = document.getElementsByTagName('input')[1].value;
+    if (/^\d+$/.test(inputSpeed)) {
+        funcSort(inputSpeed);
+    }
+    else{
+        funcSort(50);
+    }
+};
+
+//刷新页面
+document.getElementById('reload').onclick = function () {
+    location.reload();
+};

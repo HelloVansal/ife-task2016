@@ -12,14 +12,19 @@
         margin: 50px 0 0 0;
         padding: 0;
         list-style: none;
-        height: 100px;
-        background-color: #ccc;
+        /*background-color: #ccc;*/
     }
     ul li{
         margin:  0 1px;
         padding: 0;
         width: 15px;
-        background-color: red;
+        background-color: #00f;
+    }
+    input:nth-child(7){
+        width: 250px;
+    }
+    p{
+        text-align: center;
     }
 </style>
 <body>
@@ -30,14 +35,16 @@
     <button id="leftOut">左侧出</button>
     <button id="rightOut">右侧出</button>
     <button id="random">随机60个数字</button>
-    <input type="text" placeholder="排序速度，默认50">
+    <input type="text" placeholder="排序速度，请输入整数，否则按默认50执行">
     <button id="sort">排序</button>
     <button id="reload">刷新页面</button>
 </div>
+<ul id="output"></ul>
+<p>step1、自主输入60个数字或者点"随机60个数字"</p>
+<p>step2、填写排序速度，默认50（可选）</p>
+<p>step3、点击“排序”按钮</p>
+<p>注：重来请按“刷新页面”</p>
 
-<ul id="output">
-
-</ul>
 <script src="task.js"></script>
 </body>
 </html>
