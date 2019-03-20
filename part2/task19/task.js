@@ -80,3 +80,20 @@ random.onclick = function () {
     }
 };
 
+//冒泡排序
+let sort = document.getElementById('sort');
+sort.onclick = function () {
+    output.innerHTML = '';
+    if(data.length > 10){
+        for(let i in data){
+            for(let j=1; j<data.length-i; j++){
+                if(data[j-1] > data[j]){
+                    let max = data[j-1];
+                    data[j-1] = data[j];
+                    data[j] = max;
+                }
+            }
+            output.insertAdjacentHTML("afterbegin", '<li style="height:'  + data[data.length-i] + 'px;">' + '</li>');
+        }
+    }
+}
