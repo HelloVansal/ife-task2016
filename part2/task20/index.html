@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务二十：基础JavaScript练习（三）</title>
+</head>
+<style>
+    ul{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin: 50px 0 0 0;
+        padding: 0;
+        list-style: none;
+    }
+	textarea{
+		width: 100%;
+		height: 100px;
+	}
+    ul li{
+        margin:  0 2px;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: #f00;
+        color: #FFF;
+    }
+    p{
+        text-align: center;
+    }
+</style>
+<body>
+<div id="handle">
+	<textarea name="" id="" placeholder="批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔。"></textarea>
+    <button id="leftIn">左侧入</button>
+    <button id="rightIn">右侧入</button>
+    <button id="leftOut">左侧出</button>
+    <button id="rightOut">右侧出</button>
+    <input type="text" placeholder="输入想查询的标签名">
+    <button id="find">查询</button>
+    <button id="reload">刷新页面</button>
+</div>
+<ul id="output"></ul>
+
+<script src="task.js"></script>
+</body>
+</html>
