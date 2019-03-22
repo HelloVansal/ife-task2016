@@ -1,40 +1,32 @@
 let output = document.getElementById('output');
 let li = output.getElementsByTagName('li');
-let value = '';
 let data = [];  //记录所有内容存储或删除的数组
 
 //定义整数加入操作函数
 function join(position){
-    value = document.getElementsByTagName('textarea')[0].value;
-    let valueArray = value.split(' ').join(',').split(' ').join(',').split('、').join(',').split('，').join(',').split(',');
-    //删除数组中的空元素,并添加到data中
-    let valueArrayCopy = valueArray;
+    let value = document.getElementsByTagName('textarea')[0].value;
+    let valueArray = value.replace(/[\s,，、]/g, ',').split(',');
+    //删除数组中的空元素
+    let valueArrayCopy = [];
     for(let i in valueArray){
-        if(!valueArray[i] || valueArray[i] ===' '|| valueArray[i] ===' '){
-            valueArrayCopy.splice(i, 1);
-        }
-        else{
-            data.push(valueArray[i]);
+        if(valueArray[i] !== ''){
+            valueArrayCopy.push(valueArray[i]);
         }
     }
-    console.log(valueArray);
-    console.log(valueArrayCopy);
-    console.log(data);
-    for(let i in valueArray){
-        output.insertAdjacentHTML(position, '<li>' + valueArray[i] + '</li>');
+    for(let i in valueArrayCopy){
+        output.insertAdjacentHTML(position, '<li>' + valueArrayCopy[i] + '</li>');
+        data.push(valueArrayCopy[i]);
     }
 }
 
 //左侧入按钮点击时判断是否调用join函数
 document.getElementById('leftIn').onclick = function (){
 	join('afterbegin');
-    data.unshift(value);
 };
 
 //右侧入按钮点击时判断是否调用join函数
 document.getElementById('rightIn').onclick = function (){
     join("beforeend");
-    data.push(value);
 };
 
 //定义整数删除操作函数
@@ -57,6 +49,16 @@ document.getElementById('leftOut').onclick = function (){
 document.getElementById('rightOut').onclick = function (){
     leave('右', li.length-1);
     data.pop();
+};
+
+//查询
+document.getElementById('find').onclick = function (){
+    let findValue = document.getElementById('findValue').value;
+    for(let i in data){
+        if(data[i].indexOf(findValue) !== -1){
+            li[i].style.backgroundColor = 'green';
+        }
+    }
 };
 
 //刷新页面

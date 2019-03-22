@@ -9,7 +9,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        margin: 50px 0 0 0;
+        margin: 50px 0;
         padding: 0;
         list-style: none;
     }
@@ -27,10 +27,16 @@
     p{
         text-align: center;
     }
+    #output1 li:hover{
+        cursor: pointer;
+    }
 </style>
 <body>
+<div>Tag:</div>
+<textarea placeholder="☆1.请输入Tag&#10★2.回车/空格/逗号均可完成创建Tag&#10☆3.遇到重复输入的Tag，会自动忽视&#10★4.最多允许4个Tag，多于4个时，按照录入的先后顺序，会自动删除最前面Tag&#10☆5.点击已创建的Tag可将其删除"></textarea>
+<ul id="output1"></ul>
 <div>
-	<textarea name="" id="" placeholder="批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔。"></textarea>
+	<textarea placeholder="批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔。"></textarea>
     <button id="leftIn">左侧入</button>
     <button id="rightIn">右侧入</button>
     <button id="leftOut">左侧出</button>
