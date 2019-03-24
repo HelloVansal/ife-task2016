@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>任务二十九：表单（一）单个表单项的检验</title>
     <style>
-        #input{
+        #input {
             height: 30px;
             font-size: 16px;
         }
-        #button{
+
+        #button {
             width: 60px;
             height: 34px;
             border: none;
@@ -16,51 +18,49 @@
             color: white;
             background-color: #00f;
         }
-        #mark{
+
+        #mark {
             font-size: 14px;
             margin-left: 40px;
             margin-top: 5px;
         }
     </style>
 </head>
+
 <body>
-<label for="input">名称</label>
-<input type="text" id="input">
-<button id="button">验证</button>
-<div id="mark"></div>
+    <label for="input">名称</label>
+    <input type="text" id="input">
+    <button id="button">验证</button>
+    <div id="mark"></div>
 
-<script>
-    document.getElementById('button').onclick = function(){
-        let input = document.getElementById('input');
-        let mark = document.getElementById('mark');
-        let ch = 0;  //初始化中文字的个数
-        //取得中文的数量
-        if(input.value.match(/[\u4e00-\u9fa5]{1}/g)){
-            ch = input.value.match(/[\u4e00-\u9fa5]{1}/g).length;
+    <script>
+        document.getElementById('button').onclick = function () {
+            let input = document.getElementById('input');
+            let mark = document.getElementById('mark');
+            let ch = 0; //初始化中文字的个数
+            //取得中文的数量
+            if (input.value.match(/[\u4e00-\u9fa5]{1}/g)) {
+                ch = input.value.match(/[\u4e00-\u9fa5]{1}/g).length;
+            } else {
+                ch = 0;
+            }
+            //取得其他字符的数量
+            let other = input.value.length - ch;
+            if (!input.value) {
+                mark.innerText = '名称不能为空';
+                mark.style.color = '#f00';
+                input.style.border = '2px solid #f00';
+            } else if ((ch * 2 + other) < 4 || (ch * 2 + other) > 16) {
+                mark.innerText = '长度只能为4-16个字符';
+                mark.style.color = '#f00';
+                input.style.border = '2px solid #f00';
+            } else {
+                mark.innerText = '名称格式正确';
+                mark.style.color = '#0f0';
+                input.style.border = '2px solid #0f0';
+            }
         }
-        else {
-            ch = 0;
-        }
-        //取得其他字符的数量
-        let other = input.value.length - ch;
-        if(!input.value){
-            mark.innerText = '名称不能为空';
-            mark.style.color = '#f00';
-            input.style.border = '2px solid #f00';
-        }
-        else if((ch * 2 + other) < 4 || (ch * 2 + other) > 16){
-            mark.innerText = '长度只能为为4-16个字符';
-            mark.style.color = '#f00';
-            input.style.border = '2px solid #f00';
-        }
-        else {
-            mark.innerText = '名称格式正确';
-            mark.style.color = '#0f0';
-            input.style.border = '2px solid #0f0';
-        }
-    }
-
-
-</script>
+    </script>
 </body>
+
 </html>
