@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务三十二：表单（四）实现表单自动生成工厂</title>
+    <style>
+        ul {
+            border: 5px solid #ccc;
+            list-style: none;
+            padding: 0;
+            margin: 20px;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        ul li label {
+            display: inline-block;
+            width: 70px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        ul li input {
+            width: 200px;
+            height: 20px;
+            border: 1px solid rgb(136, 136, 136);
+        }
+
+        ul li span {
+            font-size: 10px;
+            color: rgb(187, 187, 187);
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" name="" id="" checked='checked' disabled="disabled">账号
+    <input type="checkbox" name="" id="" checked='checked' disabled="disabled">密码
+    <input type="checkbox" name="" id="" checked='checked' disabled="disabled">确认密码
+    <input type="checkbox" name="" id="addEmail">邮箱
+    <input type="checkbox" name="" id="addPhone">手机号码
+    <button id="create">创建表单</button>
+    <button id="reload">重置</button>
+    <form id="form">
+        <!-- <ul>
+            <li>
+                <label for="name">名称</label>
+                <input type="text" class="inputName">
+                <span class="name"></span>
+            </li>
+            <li>
+                <label for="psd">密码</label>
+                <input type="password" id="psd">
+                <span class="psd"></span>
+            </li>
+            <li>
+                <label for="psd-sure">密码确认</label>
+                <input type="password" id="psd-sure">
+                <span class="psd-sure"></span>
+            </li>
+            <li>
+                <label for="email">邮箱</label>
+                <input type="email" id="email">
+                <span class="email"></span>
+            </li>
+            <li>
+                <label for="phone">手机</label>
+                <input type="text" id="phone">
+                <span class="phone"></span>
+            </li>
+        </ul> -->
+    </form>
+    <script>
+        //获得焦点时触发函数
+        function allMark(name, e, text) {
+            let mark = e.parentNode.getElementsByClassName(name)[0];
+            mark.innerHTML = text;
+            mark.style.color = 'rgb(187, 187, 187)';
+        }
+        //值为空判断函数
+        function nullValue(mark, e, text) {
+            mark.innerHTML = text;
+            e.style.border = '1px solid rgb(136, 136, 136)';
+            mark.style.color = 'rgb(187, 187, 187)';
+        }
+        //值错误判断函数
+        function falseValue(mark, e, text) {
+            mark.innerHTML = text;
+            mark.style.color = '#f00';
+            e.style.border = '2px solid #f00';
+        }
+        //值正确判断函数
+        function trueValue(mark, e, text) {
+            mark.innerHTML = text;
+            mark.style.color = '#0f0';
+            e.style.border = '2px solid #0f0';
+        }
+        //名称判断
+        function nameJudge() {
+            let name = document.getElementsByClassName('inputName');
+            for (let i in name) {
+                name[i].onfocus = function (event) {
+                    let e = event.target;
+                    allMark('name', e, '必填，长度为4-16个字符');
+                }
+                name[i].onblur = function (event) {
+                    let e = event.target;
+                    let ch = 0;
+                    if (e.value.match(/[\u4e00-\u9fa5]{1}/g)) {
+                        ch = e.value.match(/[\u4e00-\u9fa5]{1}/g).length;
+                    } else {
+                        ch = 0;
+                    }
+                    let other = e.value.length - ch;
+                    let mark = e.parentNode.getElementsByClassName('name')[0];
+                    if (e.value === '') {
+                        nullValue(mark, e, '必填，长度为4-16个字符');
+                    } else if ((ch * 2 + other) < 4 || (ch * 2 + other) > 16) {
+                        falseValue(mark, e, '名称格式错误，长度须为4-16个字符');
+                    } else {
+                        trueValue(mark, e, '名称格式正确');
+                    }
+                }
+            }
+        }
+
+
+
+        //密码判断
+        let psd = document.getElementById('psd');
+        psd.onfocus = function () {
+            allMark('psd', '请输入密码，长度须为6-16个字符');
+        }
+        psd.onblur = function (event) {
+            let e = event.target;
+            let mark = document.getElementsByClassName('psd')[0];
+            if (e.value === '') {
+                nullValue(mark, e, '请输入密码，长度须为6-16个字符');
+                psdSubmit = false;
+            } else if (e.value.length < 6 || e.value.length > 16) {
+                falseValue(mark, e, '密码格式错误，长度须为6-16个字符');
+                psdSubmit = false;
+            } else {
+                trueValue(mark, e, '密码可用');
+                psdSubmit = true;
+            }
+        }
+        //密码确认判断
+        let psdSure = document.getElementById('psd-sure');
+        psdSureSubmit = false;
+        psdSure.onfocus = function () {
+            allMark('psd-sure', '再次输入相同的密码');
+        }
+        psdSure.onblur = function (event) {
+            let e = event.target;
+            let mark = document.getElementsByClassName('psd-sure')[0];
+            let psdValue = document.getElementById('psd').value;
+            if (e.value === '') {
+                nullValue(mark, e, '再次输入相同的密码');
+                psdSureSubmit = false;
+            } else if (e.value !== psdValue) {
+                falseValue(mark, e, '密码输入不一致');
+                psdSureSubmit = false;
+            } else {
+                trueValue(mark, e, '密码输入一致');
+                psdSureSubmit = true;
+            }
+        }
+        //邮箱判断
+        let email = document.getElementById('email');
+        emailSubmit = false;
+        email.onfocus = function () {
+            allMark('email', '请输入邮箱');
+        }
+        email.onblur = function (event) {
+            let e = event.target;
+            let mark = document.getElementsByClassName('email')[0];
+            if (e.value === '') {
+                nullValue(mark, e, '请输入邮箱');
+                emailSubmit = false;
+            } else if (!/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(e.value)) {
+                falseValue(mark, e, '邮箱格式错误');
+                emailSubmit = false;
+            } else {
+                trueValue(mark, e, '邮箱格式正确');
+                emailSubmit = true;
+            }
+        }
+        //手机号码判断
+        let phone = document.getElementById('phone');
+        phoneSubmit = false;
+        phone.onfocus = function () {
+            allMark('phone', '请输入您的手机号码');
+        }
+        phone.onblur = function (event) {
+            let e = event.target;
+            let mark = document.getElementsByClassName('phone')[0];
+            if (e.value === '') {
+                nullValue(mark, e, '请输入您的手机号码');
+                phoneSubmit = false;
+            } else if (!/^1[34578]\d{9}$/.test(e.value)) {
+                falseValue(mark, e, '手机号码格式错误');
+                phoneSubmit = false;
+            } else {
+                trueValue(mark, e, '手机号码格式正确');
+                phoneSubmit = true;
+            }
+        }
+
+        let create = document.getElementById('create');
+        create.onclick = function () {
+            let ul = document.createElement('ul');
+            ul.innerHTML =
+                '<li><label for="name">名称</label><input type="text" class="inputName"><span class="name"></span></li><li><label for="psd">密码</label><input type="password" id="psd"><span class="psd"></span></li><li><label for="psd-sure">密码确认</label><input type="password" id="psd-sure"><span class="psd-sure"></span></li>'
+            let addEmail = document.getElementById('addEmail');
+            if (addEmail.checked) {
+                ul.innerHTML +=
+                    '<li><label for="email">邮箱</label><input type="email" id="email"><span class="email"></span></li>';
+            }
+
+            let addPhone = document.getElementById('addPhone');
+            if (addPhone.checked) {
+                ul.innerHTML +=
+                    '<li><label for="phone">手机</label><input type="text" id="phone"><span class="phone"></span></li>';
+            }
+            nameJudge();
+        }
+        let reload = document.getElementById('reload');
+        reload.onclick = function () {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>

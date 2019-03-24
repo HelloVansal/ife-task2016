@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务三十一：表单（三）联动</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="radio" id="isStudent" name="student" value="isStudent" checked>
+        <label for="isStudent">在校生</label>
+        <input type="radio" id="notStudent" name="student" value="notStudent">
+        <label for="notStudent">非在校生</label>
+    </form>
+    <div id="school">
+        <label for="school">学校</label>
+        <select id="position">
+            <option value="hunan">湖南</option>
+            <option value="beijing">北京</option>
+        </select>
+        <select id="hunan">
+            <option value="renwen">湖南人文科技学院</option>
+            <option value="huanhua">怀化学院</option>
+        </select>
+        <select id="beijing">
+            <option value="qinghua">清华大学</option>
+            <option value="beijingc">北京大学</option>
+        </select>
+    </div>
+    <div id="company">
+        <label for="company">就业单位</label>
+        <select>
+            <option value="baidu">百度</option>
+            <option value="ali">阿里</option>
+        </select>
+    </div>
+    <script>
+        let isStudent = document.getElementById('isStudent');
+        let school = document.getElementById('school');
+        let company = document.getElementById('company');
+        let form = document.getElementById('form');
+        company.style.display = 'none';
+        form.onchange = function () {
+            if (isStudent.checked) {
+                school.style.display = 'inline';
+                company.style.display = 'none';
+            } 
+            else {
+                school.style.display = 'none';
+                company.style.display = 'inline';
+            }
+        }
+        let hunan = document.getElementById('hunan');
+        let beijing = document.getElementById('beijing');
+        beijing.style.display = 'none';
+        let position = document.getElementById('position');
+        position.onchange = function () {
+            if(position.options[position.selectedIndex].value === 'hunan'){
+                beijing.style.display = 'none';
+                hunan.style.display = 'inline';
+            }
+            else{
+                beijing.style.display = 'inline';
+                hunan.style.display = 'none';
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
