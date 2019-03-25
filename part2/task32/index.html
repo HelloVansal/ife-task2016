@@ -50,27 +50,27 @@
         <!-- <ul>
             <li>
                 <label for="name">名称</label>
-                <input type="text" class="inputName">
+                <input type="text" id='name' class="inputName">
                 <span class="name"></span>
             </li>
             <li>
                 <label for="psd">密码</label>
-                <input type="password" id="psd">
+                <input type="password" id="psd" class="inputPsd">
                 <span class="psd"></span>
             </li>
             <li>
                 <label for="psd-sure">密码确认</label>
-                <input type="password" id="psd-sure">
+                <input type="password" id="psd-sure" class="inputPsd-sure">
                 <span class="psd-sure"></span>
             </li>
             <li>
                 <label for="email">邮箱</label>
-                <input type="email" id="email">
+                <input type="email" id="email" class="inputEmail">
                 <span class="email"></span>
             </li>
             <li>
                 <label for="phone">手机</label>
-                <input type="text" id="phone">
+                <input type="text" id="phone" class="inputPhone">
                 <span class="phone"></span>
             </li>
         </ul> -->
@@ -100,8 +100,27 @@
             mark.style.color = '#0f0';
             e.style.border = '2px solid #0f0';
         }
+		
+		let create = document.getElementById('create');
+        create.onclick = function () {
+            let ul = document.createElement('ul');
+            ul.innerHTML =
+                '<li><label for="name">名称</label><input type="text" class="inputName"><span class="name"></span></li><li><label for="psd">密码</label><input type="password" id="psd"><span class="psd"></span></li><li><label for="psd-sure">密码确认</label><input type="password" id="psd-sure"><span class="psd-sure"></span></li>'
+            let addEmail = document.getElementById('addEmail');
+            if (addEmail.checked) {
+                ul.innerHTML +=
+                    '<li><label for="email">邮箱</label><input type="email" id="email"><span class="email"></span></li>';
+            }
+
+            let addPhone = document.getElementById('addPhone');
+            if (addPhone.checked) {
+                ul.innerHTML +=
+                    '<li><label for="phone">手机</label><input type="text" id="phone"><span class="phone"></span></li>';
+            }
+            nameJudge();
+        }
         //名称判断
-        function nameJudge() {
+        //function nameJudge() {
             let name = document.getElementsByClassName('inputName');
             for (let i in name) {
                 name[i].onfocus = function (event) {
@@ -127,7 +146,7 @@
                     }
                 }
             }
-        }
+        //}
 
 
 
@@ -212,24 +231,6 @@
             }
         }
 
-        let create = document.getElementById('create');
-        create.onclick = function () {
-            let ul = document.createElement('ul');
-            ul.innerHTML =
-                '<li><label for="name">名称</label><input type="text" class="inputName"><span class="name"></span></li><li><label for="psd">密码</label><input type="password" id="psd"><span class="psd"></span></li><li><label for="psd-sure">密码确认</label><input type="password" id="psd-sure"><span class="psd-sure"></span></li>'
-            let addEmail = document.getElementById('addEmail');
-            if (addEmail.checked) {
-                ul.innerHTML +=
-                    '<li><label for="email">邮箱</label><input type="email" id="email"><span class="email"></span></li>';
-            }
-
-            let addPhone = document.getElementById('addPhone');
-            if (addPhone.checked) {
-                ul.innerHTML +=
-                    '<li><label for="phone">手机</label><input type="text" id="phone"><span class="phone"></span></li>';
-            }
-            nameJudge();
-        }
         let reload = document.getElementById('reload');
         reload.onclick = function () {
             location.reload();
