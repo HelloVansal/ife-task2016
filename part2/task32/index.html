@@ -46,35 +46,8 @@
     <input type="checkbox" name="" id="addPhone">手机号码
     <button id="create">创建表单</button>
     <button id="reload">重置</button>
-    <form id="form">
-        <!-- <ul>
-            <li>
-                <label for="name">名称</label>
-                <input type="text" id='name' class="inputName">
-                <span class="name"></span>
-            </li>
-            <li>
-                <label for="psd">密码</label>
-                <input type="password" id="psd" class="inputPsd">
-                <span class="psd"></span>
-            </li>
-            <li>
-                <label for="psd-sure">密码确认</label>
-                <input type="password" id="psd-sure" class="inputPsd-sure">
-                <span class="psd-sure"></span>
-            </li>
-            <li>
-                <label for="email">邮箱</label>
-                <input type="email" id="email" class="inputEmail">
-                <span class="email"></span>
-            </li>
-            <li>
-                <label for="phone">手机</label>
-                <input type="text" id="phone" class="inputPhone">
-                <span class="phone"></span>
-            </li>
-        </ul> -->
-    </form>
+    <form id="form"></form>
+
     <script>
         //获得焦点时触发函数
         function allMark(name, e, text) {
@@ -100,27 +73,30 @@
             mark.style.color = '#0f0';
             e.style.border = '2px solid #0f0';
         }
-		
-		let create = document.getElementById('create');
+
+        let create = document.getElementById('create');
         create.onclick = function () {
             let ul = document.createElement('ul');
-            ul.innerHTML =
-                '<li><label for="name">名称</label><input type="text" class="inputName"><span class="name"></span></li><li><label for="psd">密码</label><input type="password" id="psd"><span class="psd"></span></li><li><label for="psd-sure">密码确认</label><input type="password" id="psd-sure"><span class="psd-sure"></span></li>'
+            ul.innerHTML = '<li><label for="name">名称</label><input type="text" id="name" class="inputName"><span class="name"></span></li><li><label for="psd">密码</label><input type="password" id="psd" class="inputPsd"><span class="psd"></span></li><li><label for="psd-sure">密码确认</label><input type="password" id="psd-sure" class="inputPsd-sure"><span class="psd-sure"></span></li>'
             let addEmail = document.getElementById('addEmail');
             if (addEmail.checked) {
-                ul.innerHTML +=
-                    '<li><label for="email">邮箱</label><input type="email" id="email"><span class="email"></span></li>';
+                ul.innerHTML += '<li><label for="email">邮箱</label><input type="email" id="email"class="inputEmail"><span class="email"></span></li>';
             }
 
             let addPhone = document.getElementById('addPhone');
             if (addPhone.checked) {
-                ul.innerHTML +=
-                    '<li><label for="phone">手机</label><input type="text" id="phone"><span class="phone"></span></li>';
+                ul.innerHTML += '<li><label for="phone">手机</label><input type="text" id="phone" class="inputPhone"><span class="phone"></span></li>';
             }
+            document.getElementById('form').appendChild(ul);
+
             nameJudge();
+            psdJudge();
+            psdSureJudge();
+            emailJudge();
+            phoneJudge();
         }
         //名称判断
-        //function nameJudge() {
+        function nameJudge() {
             let name = document.getElementsByClassName('inputName');
             for (let i in name) {
                 name[i].onfocus = function (event) {
@@ -146,91 +122,99 @@
                     }
                 }
             }
-        //}
-
-
+        }
 
         //密码判断
-        let psd = document.getElementById('psd');
-        psd.onfocus = function () {
-            allMark('psd', '请输入密码，长度须为6-16个字符');
-        }
-        psd.onblur = function (event) {
-            let e = event.target;
-            let mark = document.getElementsByClassName('psd')[0];
-            if (e.value === '') {
-                nullValue(mark, e, '请输入密码，长度须为6-16个字符');
-                psdSubmit = false;
-            } else if (e.value.length < 6 || e.value.length > 16) {
-                falseValue(mark, e, '密码格式错误，长度须为6-16个字符');
-                psdSubmit = false;
-            } else {
-                trueValue(mark, e, '密码可用');
-                psdSubmit = true;
-            }
-        }
-        //密码确认判断
-        let psdSure = document.getElementById('psd-sure');
-        psdSureSubmit = false;
-        psdSure.onfocus = function () {
-            allMark('psd-sure', '再次输入相同的密码');
-        }
-        psdSure.onblur = function (event) {
-            let e = event.target;
-            let mark = document.getElementsByClassName('psd-sure')[0];
-            let psdValue = document.getElementById('psd').value;
-            if (e.value === '') {
-                nullValue(mark, e, '再次输入相同的密码');
-                psdSureSubmit = false;
-            } else if (e.value !== psdValue) {
-                falseValue(mark, e, '密码输入不一致');
-                psdSureSubmit = false;
-            } else {
-                trueValue(mark, e, '密码输入一致');
-                psdSureSubmit = true;
-            }
-        }
-        //邮箱判断
-        let email = document.getElementById('email');
-        emailSubmit = false;
-        email.onfocus = function () {
-            allMark('email', '请输入邮箱');
-        }
-        email.onblur = function (event) {
-            let e = event.target;
-            let mark = document.getElementsByClassName('email')[0];
-            if (e.value === '') {
-                nullValue(mark, e, '请输入邮箱');
-                emailSubmit = false;
-            } else if (!/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(e.value)) {
-                falseValue(mark, e, '邮箱格式错误');
-                emailSubmit = false;
-            } else {
-                trueValue(mark, e, '邮箱格式正确');
-                emailSubmit = true;
-            }
-        }
-        //手机号码判断
-        let phone = document.getElementById('phone');
-        phoneSubmit = false;
-        phone.onfocus = function () {
-            allMark('phone', '请输入您的手机号码');
-        }
-        phone.onblur = function (event) {
-            let e = event.target;
-            let mark = document.getElementsByClassName('phone')[0];
-            if (e.value === '') {
-                nullValue(mark, e, '请输入您的手机号码');
-                phoneSubmit = false;
-            } else if (!/^1[34578]\d{9}$/.test(e.value)) {
-                falseValue(mark, e, '手机号码格式错误');
-                phoneSubmit = false;
-            } else {
-                trueValue(mark, e, '手机号码格式正确');
-                phoneSubmit = true;
+        function psdJudge() {
+            let psd = document.getElementsByClassName('inputPsd');
+            for (let i in psd) {
+                psd[i].onfocus = function (event) {
+                    let e = event.target;
+                    allMark('psd', e, '请输入密码，长度须为6-16个字符');
+                }
+                psd[i].onblur = function (event) {
+                    let e = event.target;
+                    let mark = e.parentNode.getElementsByClassName('psd')[0];
+                    if (e.value === '') {
+                        nullValue(mark, e, '请输入密码，长度须为6-16个字符');
+                    } else if (e.value.length < 6 || e.value.length > 16) {
+                        falseValue(mark, e, '密码格式错误，长度须为6-16个字符');
+                    } else {
+                        trueValue(mark, e, '密码可用');
+                    }
+                }
             }
         }
 
+        //密码确认判断
+        function psdSureJudge() {
+            let psdSure = document.getElementsByClassName('inputPsd-sure');
+            for (let i in psdSure) {
+                psdSure[i].onfocus = function (event) {
+                    let e = event.target;
+                    allMark('psd-sure', e, '再次输入相同的密码');
+                }
+                psdSure[i].onblur = function (event) {
+                    let e = event.target;
+                    let mark = e.parentNode.getElementsByClassName('psd-sure')[0];
+                    let psdValue = e.parentNode.previousSibling.getElementsByClassName('inputPsd')[0].value;
+                    if (e.value === '') {
+                        nullValue(mark, e, '再次输入相同的密码');
+                    } else if (e.value !== psdValue) {
+                        falseValue(mark, e, '密码输入不一致');
+                    } else {
+                        trueValue(mark, e, '密码输入一致');
+                    }
+                }
+            }
+        }
+
+        //邮箱判断
+        function emailJudge() {
+            let email = document.getElementsByClassName('inputEmail');
+            for (let i in email) {
+                email[i].onfocus = function (event) {
+                    let e = event.target;
+                    allMark('email', e, '请输入邮箱');
+                }
+                email[i].onblur = function (event) {
+                    let e = event.target;
+                    let mark = e.parentNode.getElementsByClassName('email')[0];
+                    if (e.value === '') {
+                        nullValue(mark, e, '请输入邮箱');
+                    } else if (!/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(e
+                            .value)) {
+                        falseValue(mark, e, '邮箱格式错误');
+                    } else {
+                        trueValue(mark, e, '邮箱格式正确');
+                    }
+                }
+            }
+        }
+
+        //手机号码判断
+        function phoneJudge() {
+            let phone = document.getElementsByClassName('inputPhone');
+            for (let i in phone) {
+                phone[i].onfocus = function () {
+                    let e = event.target;
+                    allMark('phone', e, '请输入您的手机号码');
+                }
+                phone[i].onblur = function (event) {
+                    let e = event.target;
+                    let mark = e.parentNode.getElementsByClassName('phone')[0];
+                    if (e.value === '') {
+                        nullValue(mark, e, '请输入您的手机号码');
+                    } else if (!/^1[34578]\d{9}$/.test(e.value)) {
+                        falseValue(mark, e, '手机号码格式错误');
+                    } else {
+                        trueValue(mark, e, '手机号码格式正确');
+                    }
+                }
+            }
+        }
+        
+        //重置
         let reload = document.getElementById('reload');
         reload.onclick = function () {
             location.reload();
