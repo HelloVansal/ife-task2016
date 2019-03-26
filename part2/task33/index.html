@@ -53,6 +53,10 @@
             height: 50px;
             border: 1px solid #ccc;
         }
+
+        /* #first{
+            background: url('./box.jpg') no-repeat;
+        } */
     </style>
 </head>
 
@@ -85,7 +89,7 @@
         </ul>
         <table class="game">
             <tr>
-                <td></td>
+                <td id="first"></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -208,12 +212,81 @@
     </div>
     <div class="button-wrap">
         <input type="text" name="" id="">
-        <button>go</button>
-        <button>向左旋转</button>
-        <button>向右旋转</button>
-        <button>向后旋转</button>
+        <button id="go">前进</button>
+        <button id="left">向左旋转</button>
+        <button id="right">向右旋转</button>
+        <button id="back">向后旋转</button>
     </div>
-    <script src="task.js"></script>
+    <script>
+        let first = document.getElementById('first');
+        first.style.background = 'url(./box.jpg) center no-repeat';
+        let deg = 0;
+        let x = 0;
+        let y = 0;
+        let td = '';
+        let right = document.getElementById('right');
+        right.onclick = function () {
+            deg += 90;
+            let tr = document.getElementsByTagName('tr')[y];
+            let td = tr.getElementsByTagName('td')[x];
+            td.style.transform = 'rotate(' + deg + 'deg)';
+            td.style.transition = 'all 1s';
+            console.log(deg);
+        }
+
+        let left = document.getElementById('left');
+        left.onclick = function () {
+            deg -= 90;
+            let tr = document.getElementsByTagName('tr')[y];
+            let td = tr.getElementsByTagName('td')[x];
+            td.style.transform = 'rotate(' + deg + 'deg)';
+            td.style.transition = 'all 1s';
+            console.log(deg);
+        }
+
+        let back = document.getElementById('back');
+        back.onclick = function () {
+            deg -= 180;
+            first.style.transform = 'rotate(' + deg + 'deg)';
+            first.style.transition = 'all 1s';
+            console.log(deg);
+        }
+
+        let go = document.getElementById('go');
+        go.onclick = function () {
+            if (deg >= 0) {
+                deg += 360;
+            } else {
+                deg -= 360;
+            }
+            if (deg % 360 === 90 || deg % 360 === -270) {
+                x += 1;
+                if (x > 9) {
+                    x -= 1;
+                }
+            } else if (deg % 360 === 180 || deg % 360 === -180) {
+                y += 1;
+                if (y > 9) {
+                    y -= 1;
+                }
+            } else if (deg % 360 === 270 || deg % 360 === -90) {
+                x -= 1;
+                if (x < 0) {
+                    x += 1;
+                }
+            } else {
+                y -= 1;
+                if (y < 0) {
+                    y += 1;
+                }
+            }
+            let tr = document.getElementsByTagName('tr')[y];
+            let td = tr.getElementsByTagName('td')[x];
+            td.style.background = 'url(./box.jpg) center no-repeat';
+            td.style.transform = 'rotate(' + deg + 'deg)';
+            td.style.transition = 'all 1s';
+        }
+    </script>
 </body>
 
 </html>
