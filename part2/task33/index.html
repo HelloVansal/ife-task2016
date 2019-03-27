@@ -223,7 +223,6 @@
         let deg = 0;
         let x = 0;
         let y = 0;
-        let td = '';
         let right = document.getElementById('right');
         right.onclick = function () {
             deg += 90;
@@ -246,45 +245,61 @@
 
         let back = document.getElementById('back');
         back.onclick = function () {
-            deg -= 180;
-            first.style.transform = 'rotate(' + deg + 'deg)';
-            first.style.transition = 'all 1s';
+            deg += 180;
+			let tr = document.getElementsByTagName('tr')[y];
+            let td = tr.getElementsByTagName('td')[x];
+            td.style.transform = 'rotate(' + deg + 'deg)';
+            td.style.transition = 'all 1s';
             console.log(deg);
         }
 
         let go = document.getElementById('go');
         go.onclick = function () {
-            if (deg >= 0) {
-                deg += 360;
-            } else {
-                deg -= 360;
-            }
-            if (deg % 360 === 90 || deg % 360 === -270) {
-                x += 1;
-                if (x > 9) {
-                    x -= 1;
-                }
-            } else if (deg % 360 === 180 || deg % 360 === -180) {
-                y += 1;
-                if (y > 9) {
-                    y -= 1;
-                }
-            } else if (deg % 360 === 270 || deg % 360 === -90) {
-                x -= 1;
-                if (x < 0) {
-                    x += 1;
-                }
-            } else {
-                y -= 1;
-                if (y < 0) {
-                    y += 1;
-                }
-            }
-            let tr = document.getElementsByTagName('tr')[y];
+		    let tr = document.getElementsByTagName('tr')[y];
             let td = tr.getElementsByTagName('td')[x];
-            td.style.background = 'url(./box.jpg) center no-repeat';
-            td.style.transform = 'rotate(' + deg + 'deg)';
-            td.style.transition = 'all 1s';
+            if (deg % 360 === 90 || deg % 360 === -270) {
+                if (x < 9) {
+					x += 1;
+					td.style.background = '';
+					td.nextElementSibling.style.background = 'url(./box.jpg) center no-repeat';
+					td.nextElementSibling.style.transform = 'rotate(' + deg + 'deg)';
+                }
+				console.log(x,y);
+				console.log(deg);
+            } 
+			else if (deg % 360 === 180 || deg % 360 === -180) {
+                if (y < 9) {
+					y += 1;
+					td.style.background = '';
+                    tr.nextElementSibling.getElementsByTagName('td')[x].style.background = 'url(./box.jpg) center no-repeat';
+					tr.nextElementSibling.getElementsByTagName('td')[x].style.transform = 'rotate(' + deg + 'deg)';
+					console.log(x,y);
+					console.log(deg);
+                }
+				
+            } 
+			else if (deg % 360 === 270 || deg % 360 === -90) {
+                
+                if (x > 0) {
+					x -= 1;
+					td.style.background = '';
+					td.previousElementSibling.style.background = 'url(./box.jpg) center no-repeat';
+					td.previousElementSibling.style.transform = 'rotate(' + deg + 'deg)';
+					console.log(x,y);
+					console.log(deg);
+                }
+				
+            } 
+			else if(deg % 360 === 0){
+                if (y > 0) {
+					y -= 1;
+                    td.style.background = '';
+                    tr.previousElementSibling.getElementsByTagName('td')[x].style.background = 'url(./box.jpg) center no-repeat';
+					tr.previousElementSibling.getElementsByTagName('td')[x].style.transform = 'rotate(' + deg + 'deg)';
+					console.log(x,y);
+					console.log(deg);
+                }
+            }
         }
     </script>
 </body>
